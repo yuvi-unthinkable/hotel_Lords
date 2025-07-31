@@ -106,9 +106,7 @@
   background: #1e40af;
 }
 
-.offer-room-card {
-  /* padding: 0; */
-}
+
 .offer-card-image {
   position: relative;
   /* margin: 0 10px; */
@@ -287,11 +285,7 @@
   width: 100%;
 }
 
-.slick-slide {
-  /* margin: 0 11px; */
-  /* padding: 0; */
-  /* border: 1px solid rgba(0, 0, 0, 0.1); */
-}
+
 
 #hotelId {
   padding: 0 5.73%;
