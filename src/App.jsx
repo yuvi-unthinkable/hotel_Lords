@@ -18,6 +18,7 @@ function App() {
       <Carousel />
       <div className="parent-container">
         <About
+          sectionId="about-us"
           supportHeading="About"
           mainHeading="Welcome to Lords Hotels & Resorts"
           aboutData={
@@ -38,11 +39,13 @@ function App() {
         />
         <Icons />
         <HotelandResaurts
+          sectionId="hotelId"
           supportHeading="Hotels and Resorts"
           mainHeading="Discover Our Locations"
           roomSlide={true}
         />
         <About
+          sectionId="offerId"
           supportHeading="Offers"
           mainHeading="Your Favourite Getaway, Now with Even Better Savings"
           offerSlide={true}

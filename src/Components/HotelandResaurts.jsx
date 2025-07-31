@@ -7,18 +7,20 @@ export default function HotelandResaurts({
   mainHeading,
   roomSlide,
   ClickedButton,
+  sectionId,
 }) {
   return (
+    <div>
+      <div id = {sectionId}>
+      <div className="hotel-about">
+        <div className="hotel-head">
+          <span>{supportHeading}</span>
+          <h1>{mainHeading}</h1>
+        </div>
 
-
-    <div id="about-us">
-      <div className="hotel-head">
-        <span>{supportHeading}</span>
-        <h1>{mainHeading}</h1>
+        <div className="hotel-Data">{roomSlide ? <RoomSLider /> : <></>}</div>
       </div>
 
-      <div className="hotel-Data">
-        {roomSlide ? <RoomSLider /> : <></>}
       </div>
     </div>
   );

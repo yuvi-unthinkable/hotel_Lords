@@ -15,11 +15,8 @@
 }
 
 .room-slider {
-  /* gap: 24px; */
-  /* width: 100vw; */
-  /* overflow: hidden; */
-  /* padding-top: 1.659% !important; */
   margin-bottom: 1.659%;
+  width: 100%;
 }
 
 #room-card {
@@ -69,13 +66,13 @@
   bottom: 20px;
   color: white;
   padding: 1%;
-  width: 6%;
   text-align: center;
+  min-width: 6%;
 }
 
 .slick-slider .slick-initialized,
 .slick-list {
-  width: 100vw;
+  width: 100%;
 }
 
 #room-card img {
@@ -107,9 +104,6 @@
 
 #room-card .card-data button:hover {
   background: #1e40af;
-}
-#room-card .book-now-ClickButton input {
-  width: auto;
 }
 
 .offer-room-card {
@@ -252,11 +246,11 @@
 .slick-next {
   right: 10px;
 }
-.dining-right-part .d-block {
+/* .dining-right-part .d-block {
   width: 50%;
-  /* height: 50%; */
+  /* height: 50%; 
   overflow: hidden;
-}
+} */
 .slick-prev:before,
 .slick-next:before {
   font-size: 60px !important;
@@ -269,7 +263,14 @@
   right: 50px !important;
 }
 .container1 {
-  margin-bottom: 2%;
+  padding: 5.73%;
+  margin: 3.256% 0;
+}
+.container img{
+  height: 100%;
+}
+.dining-right-part{
+  box-shadow: 28px 28px 0 rgba(218,223,241,0.4);
 }
 
 .link {
@@ -283,6 +284,7 @@
 .hotel-Data {
   padding-top: 1.659% !important ;
   margin-bottom: 1.659%;
+  width: 100%;
 }
 
 .slick-slide {
@@ -290,3 +292,8 @@
   /* padding: 0; */
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
 }
+
+#hotelId {
+  padding: 0 5.73%;
+}
+

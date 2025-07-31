@@ -4,8 +4,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* overflow-x: hidden; */
 }
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   padding: 0;
   margin: 0;
 }
@@ -134,8 +146,11 @@ marquee {
   background-color: #b72221;
   color: #fff;
   border-radius: 5px;
-  width: stretch;
+  width: auto;
   border: 0;
+}
+.navbar .book-now-ClickButton input {
+  width: stretch;
 }
 .call span {
   color: #b72221;
@@ -196,7 +211,7 @@ marquee {
 } */
 
 .carousel-container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -277,11 +292,12 @@ select {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 0 0 5.73%;
+  padding: 0 5.73%;
   margin: 3.256% 0 1.693%;
   color: rgba(16, 12, 4, 0.8);
   font-size: 15.7921px;
   font-weight: 400;
+  width: 100%;
 }
 #about-us span {
   color: rgb(57, 49, 133);
@@ -391,7 +407,6 @@ select {
   color: rgba(94, 93, 92, 0.8);
   font-size: 22.6881px;
 }
-
 
 @media screen and (max-width: 1200px) {
   .other {

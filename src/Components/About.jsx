@@ -12,22 +12,28 @@ export default function About({
   ClickedButton,
   offerSlide,
   upcomingEvent,
+  sectionId,
 }) {
   return (
-    <div id="about-us">
-      <div className="about-head">
-        <span>{supportHeading}</span>
-        <h1>{mainHeading}</h1>
-      </div>
+    <div>
+      <div id={sectionId}>
+        <div className="about-head">
+          <span>{supportHeading}</span>
+          <h1>{mainHeading}</h1>
+        </div>
 
-      <div className="about-Data">
-        {aboutData ? <p> {aboutData} </p> : <></>}
-        {roomSlide ? <RoomSLider /> : <></>}
-        {ClickedButton ? <ClickButton inside={true} val="Know more" /> : <></>}
-        {offerSlide ? <OfferSlider /> : <></>}
-        {upcomingEvent ? <UpcomingEvents /> : <></>}
+        <div className="about-Data">
+          {aboutData ? <p> {aboutData} </p> : <></>}
+          {roomSlide ? <RoomSLider /> : <></>}
+          {ClickedButton ? (
+            <ClickButton inside={true} val="Know more" />
+          ) : (
+            <></>
+          )}
+          {offerSlide ? <OfferSlider /> : <></>}
+          {upcomingEvent ? <UpcomingEvents /> : <></>}
+        </div>
       </div>
     </div>
   );
 }
-

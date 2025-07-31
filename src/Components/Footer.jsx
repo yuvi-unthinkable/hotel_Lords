@@ -48,11 +48,11 @@ export default function Footer() {
         <div className="social-icons">
           <div className="foot-head">Follow Us</div>
           <div className="icon-here">
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-square-youtube"></i>
-            <i class="fa-brands fa-square-x-twitter"></i>
-            <i class="fa-brands fa-linkedin"></i>
+            <i className="fa-brands fa-square-facebook"></i>
+            <i className="fa-brands fa-square-instagram"></i>
+            <i className="fa-brands fa-square-youtube"></i>
+            <i className="fa-brands fa-square-x-twitter"></i>
+            <i className="fa-brands fa-linkedin"></i>
           </div>
         </div>
       </div>
