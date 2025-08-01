@@ -9,12 +9,31 @@ import Dining from "./Components/Dining";
 import Hospitality from "./Components/Hospitality";
 import Footer from "./Components/Footer";
 import HotelandResaurts from "./Components/HotelandResaurts";
+import SignUp from "./Components/Login&Signup/SignUp";
+import Login from "./Components/Login&Signup/Login";
 // import UpcomingEvent from "./Components/UpcomingEvents"
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+  createBrowserRouter,
+} from "react-router";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <h1>Home</h1>,
+  },
+]);
 
 function App() {
   return (
     <>
-      <Marquee />
+      <Router>
+        <Routes>
+          <Route index element={<SignUp />} />
+          <Route path="login" element={<Login />} />
+          <Route path="homepage" element={<><Marquee />
       <Carousel />
       <div className="parent-container">
         <About
@@ -63,7 +82,13 @@ function App() {
         />
       </div>
 
-      <Footer />
+      <Footer /></>} />
+        </Routes>
+      </Router>
+
+      {/* <Login />
+      <SignUp />
+       */}
     </>
   );
 }

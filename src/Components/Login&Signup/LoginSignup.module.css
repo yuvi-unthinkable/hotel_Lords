@@ -1,0 +1,145 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(./home.jpg);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(120, 120, 241, 0.397);
+  font-family: Georgia, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: relative;
+} */
+.loginsignup .container {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(141 141 209 / 44%); /* Blue tint with 60% opacity */
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+.loginsignup nav {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+}
+.loginsignup .main-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  height: 90%;
+}
+.loginsignup .left-section {
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+  & h1 {
+    align-self: flex-start;
+    font-size: 4rem;
+    margin-bottom: 30px;
+  }
+
+  & p {
+    align-self: flex-start;
+  }
+}
+
+.loginsignup .signUp-section {
+  background-color: white;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+
+  & img {
+    width: 70px;
+    padding-top: 20px;
+  }
+  height: 89%;
+  width: 40%;
+  font-size: 1.2rem;
+}
+.loginsignup .signUp-section input,
+select {
+  margin: 5px 10px;
+  padding: 5px 30px 5px 5px;
+  /* background-color: #c0d3e2; */
+  align-self: stretch;
+  font-size: large;
+  color: rgb(83, 83, 83);
+  /* border: 1px solid rgb(117, 116, 116); */
+  border: 0;
+  border-bottom: 1px solid;
+}
+.loginsignup label {
+  padding: 5px;
+  margin: 5px 10px;
+  font-weight: bold;
+  align-self: flex-start;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.loginsignup .authenticate-head,
+.loginsignup .authentication,
+.loginsignup .submitBtn {
+  display: flex;
+  /* margin: 0 auto; */
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 80%;
+  gap: 5px;
+}
+
+.loginsignup .inputAuth {
+  display: flex;
+  margin-left: 2px;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+.loginsignup .forgotPaas {
+  align-self: flex-end;
+}
+.loginsignup .signUp-section p {
+  text-decoration: underline;
+}
+.loginsignup input[type="button"] {
+  background-color: rgb(2 149 170);
+  color: white;
+  font-weight: bold;
+  align-self: stretch;
+  padding-top: 7px;
+}
+.loginsignup input[type="button"]:hover {
+  background-color: rgb(100, 202, 100);
+  color: rgb(255, 255, 255);
+  border: 0;
+  padding-top: 7px;
+}
+
+.loginsignup .signUp-section span {
+  color: rgb(2 149 170);
+}
+@media (max-width: 500px) {
+  .loginsignup .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
