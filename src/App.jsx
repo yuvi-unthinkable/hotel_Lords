@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Marquee from "./Components/Marquee";
 import Carousel from "./Components/Carousel";
@@ -11,6 +11,10 @@ import Footer from "./Components/Footer";
 import HotelandResaurts from "./Components/HotelandResaurts";
 import SignUp from "./Components/Login&Signup/SignUp";
 import Login from "./Components/Login&Signup/Login";
+import axios from "axios";
+import PublicRoute from "./Components/routes/PublicRoute";
+import ProtectedRoute from "./Components/routes/ProtectedRoute";
+
 // import UpcomingEvent from "./Components/UpcomingEvents"
 import {
   BrowserRouter as Router,
@@ -19,6 +23,9 @@ import {
   Outlet,
   createBrowserRouter,
 } from "react-router";
+import Homepage from "./Components/Homepage";
+import UserProfile from "./Components/UserProfile";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,69 +33,57 @@ const router = createBrowserRouter([
   },
 ]);
 
+// axios
+//   .get("https://your-api.com/api/profile", {
+//     withCredentials: true, // Sends cookies along with request
+//   })
+//   .then((res) => {
+//     console.log(" Verified user:", res.data.user);
+//   })
+//   .catch((err) => {
+//     console.error(" Not authorized");
+//   });
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route index element={<SignUp />} />
-          <Route path="login" element={<Login />} />
-          <Route path="homepage" element={<><Marquee />
-      <Carousel />
-      <div className="parent-container">
-        <About
-          sectionId="about-us"
-          supportHeading="About"
-          mainHeading="Welcome to Lords Hotels & Resorts"
-          aboutData={
-            <>
-              Jaipur, the Pink City, is a fascinating blend of history, vibrant
-              culture, and breathtaking architecture. Lords Plaza Jaipur is
-              ideally located about 3 km from the iconic Hawa Mahal, making it a
-              perfect base for exploring the city's rich heritage. Our hotel
-              offers well-appointed <span>rooms</span>, three event spaces ideal
-              for business meetings or celebrations, and two dining options
-              catering to diverse tastes. Whether you're visiting for work,
-              leisure, or a special occasion, our hotel in Jaipur provides the
-              perfect combination of comfort, convenience, and personalised
-              service, ensuring a memorable stay in the heart of Jaipur.
-            </>
-          }
-          ClickedButton={true}
-        />
-        <Icons />
-        <HotelandResaurts
-          sectionId="hotelId"
-          supportHeading="Hotels and Resorts"
-          mainHeading="Discover Our Locations"
-          roomSlide={true}
-        />
-        <About
-          sectionId="offerId"
-          supportHeading="Offers"
-          mainHeading="Your Favourite Getaway, Now with Even Better Savings"
-          offerSlide={true}
-        />
-        <Dining />
-      </div>
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <SignUp />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
 
-      <Hospitality />
-
-      <div className="parent-container">
-        <About
-          supportHeading="Stay Tuned"
-          mainHeading="Upcoming Projects"
-          upcomingEvent={true}
-        />
-      </div>
-
-      <Footer /></>} />
+          <Route
+            path="homepage"
+            element={
+              <ProtectedRoute>
+                <Homepage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
-
-      {/* <Login />
-      <SignUp />
-       */}
     </>
   );
 }

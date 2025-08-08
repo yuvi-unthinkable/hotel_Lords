@@ -1,7 +1,7 @@
 import { useCallback, useInsertionEffect, useState } from "react";
 import React from "react";
 import ClickButton from "./ClickButton";
-
+import useAuth from "../hooks/useAuth";
 export default function Navbar() {
   const [displayHotel, setDisplayHotel] = useState(false);
   const [displaySidebar, setDisplaySidebar] = useState(false);
@@ -13,6 +13,52 @@ export default function Navbar() {
   //   setDisplaySidebar((prevdisplaySidebar) => !prevdisplaySidebar);
   // };
 
+  const [isAuth, res] =  useAuth();
+  console.log("🚀 ~ Navbar ~ res ka data:", res)
+
+  const cities = [
+    "Ahmedabad",
+    "Ambaji",
+    "Amreli",
+    "Ankleshwar",
+    "Bangalore",
+    "Basar",
+    "Belagavi",
+    "Bharuch",
+    "Bhavnagar",
+    "Dahej",
+    "Dehradun",
+    "Dera Bassi",
+    "Dirang",
+    "Dwarka",
+    "Gandhidham",
+    "Goa",
+    "Guwahati",
+    "Jaipur",
+    "Jammu",
+    "Jamnagar",
+    "Jodhpur",
+    "Kankidham",
+    "Kathmandu",
+    "Morbi",
+    "Nathdwara",
+    "Navi Mumbai",
+    "Navsari",
+    "Nepalgunj",
+    "Porbandar",
+    "Rajkot",
+    "Rajula",
+    "Saputara",
+    "Sasan Gir",
+    "Shrivardhan",
+    "Somnath",
+    "Sumerpur",
+    "Surat",
+    "Udaipur",
+    "Vadodara",
+  ];
+
+  // console.log("hi this is is res ", res);
   return (
     <div className="navbar">
       <ul className="navbar-contents">
@@ -61,7 +107,6 @@ export default function Navbar() {
                   <div>
                     <span>Basar</span>
                   </div>
-                  null
                   <div>
                     <span>Belagavi</span>
                   </div>
@@ -271,10 +316,12 @@ export default function Navbar() {
         <li>
           <div className="call non-resposive-menu-contents">
             <p>
-              Call Us: <span>+91 73777 34777</span>
+              Hello <span> {res?.user?.fullName || "Guest"}</span>
+              {console.log("🚀 ~ isAuth:", isAuth)}
+              {/* {console.log("🚀 ~ isAuth?.res?.data?.fullname:", isAuth.res.data.fullname)} */}
             </p>
           </div>
-          <ClickButton val="Book Now"></ClickButton>
+          <ClickButton val="Profile"></ClickButton>
         </li>
       </ul>
     </div>

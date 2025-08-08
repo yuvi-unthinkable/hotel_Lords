@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./LoginSignup.module.css";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
+import axios from "axios";
 
 export default function SignUp() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    password: "",
+  });
 
+  const [message, setMessage] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
   const navigate = useNavigate();
 
-  const handleHomeClick = () => {
-    navigate("homepage");
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
+
+  const handleSubmit = async (e) => {
+    try {
+      const file = new FormData();
+      console.log("🚀 ~ handleSubmit ~ selectedFile:", formData);
+
+      const response = await axios.post("/api/v1/users/register", formData);
+
+      if (response.data.sucess) {
+        setMessage(response.data.message);
+        navigate("/login");
+      } else {
+        setMessage("signup failed");
+      }
+    } catch (error) {
+      console.log("Error :", error);
+      setMessage("something went wrong");
+    }
+  };
+
+  // const handleHomeClick = () => {
+  //   navigate("homepage");
+  // };
   return (
     <div className={styles.loginsignup}>
       <div className={styles.container}>
@@ -39,19 +74,30 @@ export default function SignUp() {
                   type="text"
                   placeholder="Munna Tripathi"
                   name="fullName"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className={styles.inputAuth}>
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  placeholder="Munna"
+                  name="username"
+                  onChange={handleChange}
                   required
                 />
               </div>
 
-              <div className={styles.inputAuth}>
+              {/* <div className={styles.inputAuth}>
                 <label htmlFor="gender">Gender</label>
                 <select name="gender" required>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
-              </div>
+              </div> */}
 
-              <div className={styles.inputAuth}>
+              {/* <div className={styles.inputAuth}>
                 <label htmlFor="dob">Date of Birth</label>
                 <input
                   type="date"
@@ -59,7 +105,7 @@ export default function SignUp() {
                   name="dob"
                   required
                 />
-              </div>
+              </div> */}
 
               <div className={styles.inputAuth}>
                 <label htmlFor="email">Email Address</label>
@@ -67,30 +113,51 @@ export default function SignUp() {
                   type="email"
                   placeholder="abc@email.com"
                   name="email"
+                  onChange={handleChange}
                   required
                 />
               </div>
 
-              <div className={styles.inputAuth}>
-                <label htmlFor="phone">Phone Number</label>
-                <input type="number" placeholder="1234567890" name="phone" />
+              {/* <div className={styles.inputAuth}>
+                <label htmlFor="avatar">Upload Avatar</label>
+                <input
+                  type="file"
+                  placeholder="image"
+                  name="avatar"
+                  onChange={(e)=> setSelectedFile(e.target.files[0])}
+                />
               </div>
+              <div className={styles.inputAuth}>
+                <label htmlFor="coverImage">Upload Cover Image</label>
+                <input
+                  type="file"
+                  placeholder="image"
+                  name="coverImage"
+                  onChange={(e)=> setSelectedFile(e.target.files[0])}
+                />
+              </div> */}
 
               <div className={styles.inputAuth}>
-                <label htmlFor="pass">Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  name="pass"
+                  name="password"
                   placeholder="Abc@1234"
                   pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                  onChange={handleChange}
                   required
                 />
               </div>
             </div>
 
             <div className={styles.submitBtn}>
-              <input type="button" value="Sign Up" onClick={handleHomeClick}/>
+              <input
+                type="button"
+                value="Sign Up"
+                onClick={handleSubmit}
+                formMethod="post"
+              />
               <Link to="/login">
                 <p>
                   Already have an account? <span>Signin</span>
