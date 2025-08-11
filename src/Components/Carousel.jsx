@@ -7,7 +7,7 @@ export default function Carousel() {
   return (
     <div className="carousel-container">
       <Navbar />
-      <AutoPlay  dotsIn = {true} className="carousel-width"/>
+      <AutoPlay  dotsIn = {true} className="carousel-width" dinner = {false}/>
       <Form />
     </div>
   );

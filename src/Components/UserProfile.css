@@ -32,6 +32,29 @@
     }
 }
 /* Avatar image */
+.profile-image{
+  position: relative;
+}
+.profile-image p {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 45%;
+  color: white;
+  display: none;
+  font-size: 1.3rem;
+
+}
+.profile-image:hover{
+  p{
+
+    display: block;
+  }
+  img{
+
+    filter: brightness(50%);
+  }
+}
 .profile-image img {
   width: 140px;
   height: 140px;
@@ -39,7 +62,10 @@
   border-radius: 50%;
   border: 3px solid #007bff;
   background-color: #f0f0f0;
+  /* position: absolute; */
 }
+
+
 
 /* Container for user info */
 .user.profile-details {

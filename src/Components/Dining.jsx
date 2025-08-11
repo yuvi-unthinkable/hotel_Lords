@@ -25,7 +25,7 @@ export default function Dining() {
           />
         </div>
         <div className="col-md-6 dining-right-part">
-          <AutoPlay dotsIn={false} />
+          <AutoPlay dotsIn={false} dinner = {true}/>
         </div>
       </div>
     </div>

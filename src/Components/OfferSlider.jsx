@@ -7,19 +7,19 @@ import ClickButton from "./ClickButton";
 
 export const srcArray = [
   {
-    source: "/images/offer-1.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1025,h_769,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/1024x768_5c4c120a",
     data: "Season’s Treat @5999",
   },
   {
-    source: "/images/offer-2.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1024,h_768,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/WhatsApp_Image_2025-07-21_at_11.51.12",
     data: "Jawai Wildlife Leopard Safari Offer",
   },
   {
-    source: "/images/offer-3.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_33,y_0,w_1365,h_1024,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/ChatGPT_Image_May_20,_2025,_12_12_38_PM",
     data: "Monsoon Special Offer",
   },
   {
-    source: "/images/offer-4.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_128,y_0,w_769,h_769,r_0,c_crop/q_80,w_900,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/1024x768_5c4c120a",
     data: "Season’s Treat @5999",
   },
 ];

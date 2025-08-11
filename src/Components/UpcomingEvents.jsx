@@ -7,24 +7,24 @@ import UpcomingEventCard from "./UpcomingEventCard"
 
 export const srcArray = [
   {
-    source: "/images/upcoming.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_63,y_0,w_504,h_630,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/katra_b656c2d6",
     data: "Radhanpur",
     data2: "Gujrat",
   },
   {
-    source: "/images/upcoming2.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_63,y_0,w_504,h_630,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/Gir_975fd0ad",
     data: "Una",
     data2: "Gujrat",  },
   {
-    source: "/images/upcoming3.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_127,y_0,w_864,h_1080,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/Tulshishyam_,_Una_,_Gujarat",
     data: "Bhopal",
     data2: "Madhya Pradesh",  },
   {
-    source: "/images/upcoming4.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_108,y_0,w_864,h_1080,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/muduba-shimoga1_8b20d5d8",
     data: "Kota",
     data2: "Rajasthan",  },
   {
-    source: "/images/upcoming5.jpeg",
+    source: "https://assets.simplotel.com/simplotel/image/upload/x_63,y_0,w_504,h_630,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/6607cb7c90874kota_img",
     data: "Siliguri",
     data2: "West Bengal",  },
 ];
