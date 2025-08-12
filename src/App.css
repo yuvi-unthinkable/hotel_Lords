@@ -269,6 +269,7 @@
 }
 .dining-right-part{
   box-shadow: 28px 28px 0 rgba(218,223,241,0.4);
+  padding-right: 0;
 }
 
 .link {
