@@ -21,10 +21,6 @@ function AutoPlay({ dinner }) {
       })
     })
     getHotelImage()
-
-
-      
-    
   },[])
 
   const images = !dinner ? [

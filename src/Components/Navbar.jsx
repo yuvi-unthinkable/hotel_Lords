@@ -2,6 +2,7 @@ import { useCallback, useInsertionEffect, useState } from "react";
 import React from "react";
 import ClickButton from "./ClickButton";
 import useAuth from "../hooks/useAuth";
+import { Link } from "react-router";
 export default function Navbar() {
   const [displayHotel, setDisplayHotel] = useState(false);
   const [displaySidebar, setDisplaySidebar] = useState(false);
@@ -64,10 +65,13 @@ export default function Navbar() {
       <ul className="navbar-contents">
         <div className="non-resposive-menu-contents">
           <li className="logo-img">
+            <Link to={"/homepage"}>
             <img
               src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
               alt="Logo"
+              
             />
+            </Link>
           </li>
         </div>
         <div className="non-resposive-menu-contents menu-names">

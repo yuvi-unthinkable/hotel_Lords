@@ -6,6 +6,16 @@
   box-sizing: border-box;
 } */
 
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
 .carousel-parent {
   position: relative;
 }
@@ -106,7 +116,6 @@
   background: #1e40af;
 }
 
-
 .offer-card-image {
   position: relative;
   /* margin: 0 10px; */
@@ -206,7 +215,7 @@
 
 .carousel-container .d-block {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
 }
 /* .slick-prev,
 .slick-next {
@@ -264,11 +273,11 @@
   padding: 5.73%;
   margin: 3.256% 0;
 }
-.container img{
+.container img {
   height: 100%;
 }
-.dining-right-part{
-  box-shadow: 28px 28px 0 rgba(218,223,241,0.4);
+.dining-right-part {
+  box-shadow: 28px 28px 0 rgba(218, 223, 241, 0.4);
   padding-right: 0;
 }
 
@@ -286,9 +295,6 @@
   width: 100%;
 }
 
-
-
 #hotelId {
   padding: 0 5.73%;
 }
-

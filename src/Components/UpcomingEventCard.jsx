@@ -1,7 +1,7 @@
 import React from "react";
 import ClickButton from "./ClickButton";
 
-export default function Card({ source, data, data2 }) {
+export default function offerCard({ source, data, data2 }) {
   return (
     <div id="offer-room-card" className="offer-room-card upcoming-event-card">
       <img

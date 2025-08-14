@@ -25,6 +25,7 @@ import {
 } from "react-router";
 import Homepage from "./Components/Homepage";
 import UserProfile from "./Components/UserProfile";
+import HotelBookingPage from "./Components/HotelBookingPage";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <UserProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="hotelBooking/:id"
+            element={
+              <ProtectedRoute>
+                <HotelBookingPage />
               </ProtectedRoute>
             }
           />

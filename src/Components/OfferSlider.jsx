@@ -18,10 +18,10 @@ export const srcArray = [
     source: "https://assets.simplotel.com/simplotel/image/upload/x_33,y_0,w_1365,h_1024,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/ChatGPT_Image_May_20,_2025,_12_12_38_PM",
     data: "Monsoon Special Offer",
   },
-  {
-    source: "https://assets.simplotel.com/simplotel/image/upload/x_128,y_0,w_769,h_769,r_0,c_crop/q_80,w_900,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/1024x768_5c4c120a",
-    data: "Season’s Treat @5999",
-  },
+  // {
+  //   source: "https://assets.simplotel.com/simplotel/image/upload/x_128,y_0,w_769,h_769,r_0,c_crop/q_80,w_900,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/1024x768_5c4c120a",
+  //   data: "Season’s Treat @5999",
+  // },
 ];
 
 export default function OfferSlider() {
@@ -29,7 +29,7 @@ export default function OfferSlider() {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: false,
