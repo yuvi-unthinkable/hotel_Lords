@@ -41,8 +41,10 @@ export default function HotelBookingPage() {
     fetchHotel();
   }, []);
 
-  const fetchAvailableRooms = async () => {
-    console.log(dateData);
+  // console.log(dateData);
+
+  const fetchAvailableRooms = async (dateData) => {
+    console.log("here is date",dateData);
     try {
       await axios
         .post(`http://localhost:8000/api/v1/users/rooms-available/${id}`, {
@@ -133,7 +135,7 @@ export default function HotelBookingPage() {
       // const { checkIn, checkOut } = dateData || {};
       // console.log("🚀 ~ HotelBookingPage ~ checkIn:", checkIn);
       // document.querySelector(".rooms-here").style.display = "block";
-      fetchAvailableRooms();
+      fetchAvailableRooms(dateData);
 
     },[]
   );

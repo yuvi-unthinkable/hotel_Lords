@@ -103,7 +103,7 @@ export default function Form({insideHotelPage, dateData,handleDateChange, dateOn
             <p className={insideHotelPage ? "inside-hotel-page" : ""}>
               From <span>2,580</span> INR/Night
             </p>
-            <ClickButton onClick={handleProceed} val={insideHotelPage ? "Proceed" : "Book Now"} dateOnClick = {dateOnClick} datePass = {true} />
+            <ClickButton val={insideHotelPage ? "Proceed" : "Book Now"} dateOnClick = {dateOnClick} datePass = {true} />
             <p className={insideHotelPage ? "inside-hotel-page" : "red"}>
               Multi Room Bookings
             </p>
