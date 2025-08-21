@@ -1,12 +1,16 @@
 import React from "react";
 import ClickButton from "./ClickButton";
 
-export default function Form(props) {
+export default function Form({insideHotelPage, dateData,handleDateChange, dateOnClick, handleProceed}) {
   return (
     <>
       <div className="form">
         <form action="" className="detail-form">
-          <div className="location-select">
+          <div
+            className={
+              insideHotelPage ? "inside-hotel-page" : "location-select"
+            }
+          >
             <label htmlFor="location">Location</label>
             <select name="location" id="location">
               <option value="">Select a City:</option>
@@ -21,19 +25,37 @@ export default function Form(props) {
             </select>
           </div>
 
-          <div className="location-select">
+          <div
+            className={
+              insideHotelPage ? "inside-hotel-page" : "location-select"
+            }
+          >
             <label htmlFor="hotel-select">Hotel</label>
             <select name="hotel-select" id="hotel-select">
               <option value="">Select a Hotel:</option>
             </select>
           </div>
           <div className="checkin">
-            <label htmlFor="checkin">Check-In</label>
-            <input type="date" name="checkin" />
+            <label htmlFor="checkIn">Check-In</label>
+
+            <input
+              type="date"
+              name="checkIn"
+              value={dateData?.checkIn || "dd/mm/yyyy" } 
+              min={new Date().toISOString().split('T')[0]}
+              onChange={(e) => handleDateChange(e.target.value, "checkIn")}
+              required
+            /> 
           </div>
           <div className="adults">
             <label htmlFor="peoples">Adults</label>
-            <select name="peoples" id="people">
+            <select
+              name="people"
+              id="people"
+              value={dateData?.adults}
+              onChange={(e) => handleDateChange(e.target.value, "adults")}
+              required
+            >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -44,18 +66,32 @@ export default function Form(props) {
           </div>
           <div className="child">
             <label htmlFor="child">Children</label>
-            <select name="child" id="childs">
+            <select
+              name="child"
+              id="child"
+              value={dateData?.children}
+              onChange={(e) => handleDateChange(e.target.value, "children")}
+            >
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
-              <option value="3">3</option>
             </select>
           </div>
           <div className="checkout">
             <label htmlFor="checkout">Check-Out</label>
-            <input type="date" name="checkout" />
+            <input
+              type="date"
+              name="checkout"
+              min={dateData?.checkIn}
+              value={dateData?.checkOut || "dd/mm/yyyy"}
+              onChange={(e) => handleDateChange(e.target.value, "checkOut")}
+              required
+            />
           </div>
 
-          <div className="promoc">
+          <div
+            className={insideHotelPage ? "inside-hotel-page" : "promoc"}
+          >
             <label htmlFor="promocode">PromoCode</label>
             <input
               name="promocode"
@@ -64,28 +100,19 @@ export default function Form(props) {
             />
           </div>
           <div className="book-now">
-            <p>
+            <p className={insideHotelPage ? "inside-hotel-page" : ""}>
               From <span>2,580</span> INR/Night
             </p>
-            <ClickButton val="Book Now" />
-            <p className="red">Multi Room Bookings</p>
+            <ClickButton onClick={handleProceed} val={insideHotelPage ? "Proceed" : "Book Now"} dateOnClick = {dateOnClick} datePass = {true} />
+            <p className={insideHotelPage ? "inside-hotel-page" : "red"}>
+              Multi Room Bookings
+            </p>
           </div>
         </form>
-        <p>Why book Direct?</p>
+        <p className={insideHotelPage ? "inside-hotel-page" : ""}>
+          Why book Direct?
+        </p>
       </div>
-      {/* <div className="indicators" id="indicators">
-        <div className="dot" data-index="0"></div>
-        <div className="dot" data-index="1"></div>
-        <div className="dot" data-index="2"></div>
-        <div className="dot" data-index="3"></div>
-        <div className="dot" data-index="4"></div>
-        <div className="dot" data-index="5"></div>
-        <div className="dot" data-index="6"></div>
-        <div className="dot" data-index="7"></div>
-        <div className="dot" data-index="8"></div>
-        <div className="dot" data-index="9"></div>
-        <div className="dot" data-index="10"></div>
-      </div> */}
     </>
   );
 }

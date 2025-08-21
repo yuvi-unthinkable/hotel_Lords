@@ -32,7 +32,7 @@ export default function UserProfile() {
   };
 
   const handleAvatarChange = async (event) => {
-    console.log("🚀 ~ handleAvatarChange ~ event:", event)
+    console.log("🚀 ~ handleAvatarChange ~ event:", event);
     const file = event.target.files[0];
 
     if (!file) return;
@@ -57,14 +57,20 @@ export default function UserProfile() {
     }
   };
 
-      console.log("🚀 ~ UserProfile ~ fileInputRef.current.value:", fileInputRef?.current?.value)
+  console.log(
+    "🚀 ~ UserProfile ~ fileInputRef.current.value:",
+    fileInputRef?.current?.value
+  );
 
   const [isAuth, res] = useAuth();
   console.log("🚀 ~ UserProfile ~ res:", res?.user?.fullname);
 
+  console.log("🚀 ~ UserProfile ~ res:", res);
   if (!res || !res.user) {
     return <div>Loading user data...</div>; // Prevents crash on first render
   }
+
+  // console.log(res.user);
   return (
     <div className="profile">
       <Navbar />
@@ -105,6 +111,11 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="bookings">
+        <h2>My Bookings</h2>
+        <div className="booked-hotels">{console.log(res.user)}</div>
       </div>
       <Footer />
     </div>

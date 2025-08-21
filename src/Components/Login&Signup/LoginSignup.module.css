@@ -18,7 +18,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgb(141 141 209 / 44%); /* Blue tint with 60% opacity */
+  background: rgba(183, 34, 33, 0.9); /* Blue tint with 60% opacity */
   z-index: 0;
   width: 100%;
   height: 100%;
@@ -29,6 +29,7 @@ body {
   color: white;
   font-size: 2rem;
   padding: 10px;
+  background-color: rgba(236,236,236,.9);
 }
 .loginsignup .main-content {
   display: flex;
@@ -120,7 +121,7 @@ select {
   text-decoration: underline;
 }
 .loginsignup input[type="button"] {
-  background-color: rgb(2 149 170);
+  background-color: rgba(183, 34, 33, 0.9);
   color: white;
   font-weight: bold;
   align-self: stretch;
@@ -133,8 +134,9 @@ select {
   padding-top: 7px;
 }
 
-.loginsignup .signUp-section span {
-  color: rgb(2 149 170);
+
+.loginsignup .switchBack {
+  color: rgba(183, 34, 33, 0.9);
 }
 @media (max-width: 500px) {
   .loginsignup .main-content {

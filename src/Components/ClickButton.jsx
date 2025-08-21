@@ -1,12 +1,12 @@
 import React from "react";
 import { Navigate, useNavigate } from "react-router";
 
-export default function Button(prop) {
+export default function Button({val, inside, datePass, dateOnClick, handleProceed }) {
 
   const navigate = useNavigate();
 
   const handleOnclick = (() => {
-    if(prop.val==="Profile"){
+    if(val==="Profile"){
       navigate("/profile")
     }
   })
@@ -14,10 +14,10 @@ export default function Button(prop) {
   return (
     <div
       className={
-        prop.inside ? "book-now-ClickButton aboutData" : "book-now-ClickButton"
+        inside ? "book-now-ClickButton aboutData" : "book-now-ClickButton"
       }
     >
-      <input type="button" value={prop.val}  onClick={handleOnclick}/>
+      <input type="button" typeof="submit" value={val}  onClick={datePass ? dateOnClick : handleOnclick}/>
     </div>
   );
 }
