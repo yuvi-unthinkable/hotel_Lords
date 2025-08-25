@@ -128,7 +128,7 @@ export default function UserProfile() {
       <div className="profile section">
         <div className="profile-upper-section">
           <div className="profile-image">
-            <img src={res?.user?.avatar} alt="pic" srcSet="" />
+            <img src={res?.user?.avatar} alt="pic"/>
             <p onClick={handleAvatarClick}>
               <i class="fa-solid fa-pen"></i>
               <input

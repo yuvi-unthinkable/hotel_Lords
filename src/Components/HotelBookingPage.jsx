@@ -265,11 +265,11 @@ export default function HotelBookingPage() {
             <div className="booking-left-section">
               <div className="image-grid">
                 <div className="main-image">
-                  <img src={res.photos[0].url} alt="" srcSet="" />
+                  <img src={res.photos[0].url} alt="" />
                 </div>
                 <div className="other-images">
-                  <img src={res?.photos[1]?.url} alt="" srcSet="" />
-                  <img src={res?.photos[2]?.url} alt="" srcSet="" />
+                  <img src={res?.photos[1]?.url} alt="" />
+                  <img src={res?.photos[2]?.url} alt="" />
                 </div>
               </div>
               <div className="booking-hotel-about">
@@ -350,7 +350,7 @@ export default function HotelBookingPage() {
               <h2 className="room-heading">{room.roomType}</h2>
               <div className="room-section-data">
                 <div className="room-image">
-                  <img src={room.roomPhoto} alt="" srcSet="" />
+                  <img src={room.roomPhoto} alt="" />
                 </div>
                 <div className="room-about-data">
                   <p> Number of persons {room.noOfPersons}</p>
