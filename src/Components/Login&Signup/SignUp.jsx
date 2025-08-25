@@ -3,8 +3,12 @@ import styles from "./LoginSignup.module.css";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import axios from "axios";
+import { useToast } from "../../hooks/toaster";
 
 export default function SignUp() {
+
+  const {showToast} = useToast()
+
   const [formData, setFormData] = useState({
     fullName: "",
     username: "",
@@ -32,11 +36,13 @@ export default function SignUp() {
 
       if (response.data.sucess) {
         setMessage(response.data.message);
+        showToast("Registered Sucesssfully", "sucess")
         navigate("/login");
       } else {
         setMessage("signup failed");
       }
     } catch (error) {
+      showToast("Registration Failed", "error")
       console.log("Error :", error);
       setMessage("something went wrong");
     }

@@ -62,6 +62,10 @@ export default function Form({insideHotelPage, dateData,handleDateChange, dateOn
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
           <div className="child">
@@ -70,11 +74,20 @@ export default function Form({insideHotelPage, dateData,handleDateChange, dateOn
               name="child"
               id="child"
               value={dateData?.children}
+              // max = {dateData?.adults*2}
               onChange={(e) => handleDateChange(e.target.value, "children")}
+
             >
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
             </select>
           </div>
           <div className="checkout">

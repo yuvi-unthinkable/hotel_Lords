@@ -4,6 +4,7 @@
     width: 100%;
     height: 100%;
 }
+
 .profile-upper-section {
   max-width: 600px;
   margin: 50px auto;
@@ -85,10 +86,45 @@
 
 .user.profile-details span {
   font-size: 16px;
-  color: #555;
+  /* color: #555; */
   margin-bottom: 10px;
   display: block;
 }
+
+.booked-hotels{
+  padding: 10px;
+  margin: 10px;
+
+}
+.booking-room-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+}
+
+.booking-room-header img{
+  width: 250px;
+}
+
+.booking-rooms{
+  margin: 15px;
+  padding: 15px;
+  border: #555;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 8px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 12px;
+  
+}
+.room-detail{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+
+}
+
 
 /* Responsive tweak */
 @media (max-width: 768px) {

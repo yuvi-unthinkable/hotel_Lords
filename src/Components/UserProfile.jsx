@@ -1,12 +1,16 @@
-import React, { useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import "./UserProfile.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import ClickButton from "./ClickButton";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useToast } from "../hooks/toaster";
 
 export default function UserProfile() {
+  const { showToast } = useToast();
+  const [userBooking, setUserBookings] = useState();
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
 
@@ -19,13 +23,35 @@ export default function UserProfile() {
           withCredentials: true,
         }
       );
+      if (res) showToast("User Logged out Sucessfully", "success");
 
       console.log(res);
       navigate("/login");
     } catch (error) {
+      showToast("Something went wrong", "error");
       console.log("🚀 ~ handleOnClick ~ error:", error);
     }
   };
+
+  useEffect(() => {
+    const bookingInfo = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8000/api/v1/users/user-bookings",
+          {
+            withCredentials: true,
+          }
+        );
+        setUserBookings(res.data?.data);
+      } catch (error) {
+        console.log("🚀 ~ bookingInfo ~ error:", error);
+      }
+    };
+
+    bookingInfo();
+  }, []);
+
+  console.log("hey this is userBooking", userBooking);
 
   const handleAvatarClick = () => {
     fileInputRef.current.click();
@@ -51,8 +77,11 @@ export default function UserProfile() {
           withCredentials: true,
         }
       );
+      if (res) showToast("Profile Picture updated", "success");
+
       console.log("this is the respomse for the update avatear ", res.data);
     } catch (error) {
+      showToast("Profile Picture cannot be updated", "error");
       console.log("🚀 ~ handleAvatarClick ~ error:", error);
     }
   };
@@ -69,6 +98,28 @@ export default function UserProfile() {
   if (!res || !res.user) {
     return <div>Loading user data...</div>; // Prevents crash on first render
   }
+
+  const deleteBooking = (book_id) => {
+    try {
+      axios
+        .post(
+          "http://localhost:8000/api/v1/users/deleteBooking",
+          {
+            book_id,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          // console.log("Booking sucessfully deleted");
+          showToast("Booking sucessfully deleted", "success")
+          bookingInfo()
+        });
+    } catch (error) {
+      console.log("🚀 ~ booking not deleted UserProfile ~ error:", error);
+    }
+  };
 
   // console.log(res.user);
   return (
@@ -113,10 +164,54 @@ export default function UserProfile() {
         </div>
       </div>
 
-      <div className="bookings">
+      <div className="bookings container">
         <h2>My Bookings</h2>
-        <div className="booked-hotels">{console.log(res.user)}</div>
+        <div className="booked-hotels">
+          <div className="book-detail">
+            {userBooking?.map((booking, index) => (
+              <div className="booking-rooms" key={index}>
+                <div className="booking-room-header">
+                  <span>
+                    <img src={booking.hotel?.photos[0].url} alt="" />
+                  </span>
+                  <span>
+                    <strong>Hotel:</strong> {booking.hotel?.hotelName || "N/A"}
+                  </span>
+                  <span>
+                    <div className="book-now-ClickButton">
+                      <input
+                        type="button"
+                        typeof="submit"
+                        value="Cancel Booking"
+                        onClick={() => deleteBooking(booking._id)}
+                      />
+                    </div>
+                  </span>
+                </div>
+
+                {booking.hotelRooms?.length > 0 ? (
+                  booking.hotelRooms.map((room, i) => (
+                    <div key={i} className="room-detail">
+                      <span className="col-4">
+                        <strong>Room Type:</strong> {room.roomType}
+                      </span>
+                      <span className="col-4">
+                        <strong>Rooms:</strong> {room.quantity}
+                      </span>
+                      <span className="col-4">
+                        <strong>Price:</strong> {room.totalPrice}
+                      </span>
+                    </div>
+                  ))
+                ) : (
+                  <span>No rooms booked.</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
       <Footer />
     </div>
   );

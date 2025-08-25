@@ -3,8 +3,15 @@ import styles from "./LoginSignup.module.css";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import axios from "axios";
+import { useToast } from "../../hooks/toaster";
+
+
 
 export default function Login() {
+
+  const {showToast} = useToast();
+  
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -34,12 +41,14 @@ export default function Login() {
         setToken(response.data.acessToken);
         localStorage.setItem("refreshToken", response.data.refreshToken);
         localStorage.setItem("authToken", response.data.acessToken);
+        showToast("Logged in sucessfully", "success")
         navigate("/homepage");
       } else {
+       
         setMessage("Login failed");
-        console.log("🚀 ~ handleSubmit ~ ogin failed':");
       }
     } catch (error) {
+       showToast("Invalid Credentials", "error")
       console.log("Error :", error);
       setMessage("something went wrong");
     }
@@ -52,12 +61,13 @@ export default function Login() {
           <img
             src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
             alt="logo"
-            style={{width:"70px"}}
+            style={{ width: "70px" }}
           />
           {/* <h1>
             <strong>Hotel </strong>Lords
           </h1> */}
         </nav>
+
 
         <div className={styles["main-content"]}>
           <div className={styles["left-section"]}>

@@ -1,22 +1,30 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router";
+import { Navigate, useNavigate, useParams } from "react-router";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Form from "./Form";
 import "./hotelBooking.css";
+import { useToast } from "../hooks/toaster";
 
 export default function HotelBookingPage() {
+
+  const navigate = useNavigate()
+
+  const { showToast } = useToast();
+
   const { id } = useParams();
   const [res, setRes] = useState();
   const [room, setRoom] = useState([]);
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState({});
   const [dateData, setDateData] = useState({
     checkIn: "",
     checkOut: "",
     adults: 0,
     children: 0,
   });
+
+  const [personSum, setPersonSum] = useState(0);
   console.log("🚀 ~ HotelBookingPage ~ id:", id);
   console.log("🚀 ~ HotelBookingPage ~ count:8768", count);
 
@@ -42,47 +50,118 @@ export default function HotelBookingPage() {
   }, []);
 
   // console.log(dateData);
+  // let roomFetched = false
 
-  const fetchAvailableRooms = async (dateData) => {
-    console.log("here is date",dateData);
-    try {
-      await axios
-        .post(`http://localhost:8000/api/v1/users/rooms-available/${id}`, {
-          dateData,
-        })
-        .then((res) => {
+  useEffect(() => {
+    const fetchRooms = async () => {
+      if (
+        dateData.checkIn &&
+        dateData.checkOut &&
+        dateData.adults &&
+        (dateData.children || 1)
+      ) {
+        console.log("Here is date", dateData);
+        try {
+          const res = await axios.post(
+            `http://localhost:8000/api/v1/users/rooms-available/${id}`,
+            { dateData }
+          );
+          showToast("Room details fetched", "success");
           console.log("🚀 ~ fetchAvailableRooms ~ res:", res.data);
-          setRoom(()=>res.data.data)
-          console.log(room)
-        });
-    } catch (error) {}
-  };
+          const initialCount = {};
+
+          res.data.data.forEach((room) => {
+            initialCount[room?._id] = 0;
+          });
+
+          setCount((prev) => ({
+            ...prev,
+            ...initialCount,
+          }));
+          setRoom(res.data.data);
+        } catch (error) {
+          showToast("Room details not fetched", "error");
+          console.error(error);
+        }
+      }
+    };
+    setCount(0);
+    fetchRooms();
+    setPersonSum(0);
+    // setPersonSum(dateData.adults)
+  }, [dateData, id]);
+
+  // if(roomFetched) {useEffect(fetchAvailableRooms(),dateData)};
 
   const handleDateChange = (value, name) => {
     setDateData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-  }
+  };
 
   const incrementor = (roomId, availableRooms) => {
-    setCount((prev) => {
-      const current = prev?.[roomId] || 0;
-      if (current >= availableRooms) {
-        console.log("cannot book more than available rooms ");
-        return prev;
+    if (personSum < dateData.adults) {
+      if (count[roomId] < availableRooms) {
+        setPersonSum((prev) => prev + 1);
+        setCount((prev) => {
+          const current = prev?.[roomId] || 0;
+
+          return {
+            ...prev,
+            [roomId]: current + 1,
+          };
+        });
+      } else {
+        showToast("Cannot book more than available rooms", "warning");
       }
-      return {
-        ...prev,
-        [roomId]: current + 1,
-      };
-    });
+    } else {
+      showToast("Add more persons to book more rooms", "warning");
+    }
+
+    // setCount((prev) => {
+    //   // if(dateData.children <= personSum*2) showToast("parents can have atmost 2 childrens in each room")
+    //   console.log("🚀 ~ incrementor ~ personSum:", personSum);
+    //   if (personSum >= dateData.adults) {
+    //     showToast("select more persons to take more rooms", "warning");
+    //     return prev;
+    //   }
+    //   if (current >= availableRooms) {
+    //     showToast("cannot book more than available rooms", "warning");
+    //     return prev;
+    //   }
+    //   setPersonSum((prev) => prev + 1);
+    // });
   };
   const decrementor = (roomId) => {
-    setCount((prev) => ({
-      ...prev,
-      [roomId]: Math.max((prev?.[roomId] || 0) - 1, 0),
-    }));
+    if (personSum > 0) {
+      if (count[roomId] > 0) {
+        setPersonSum((prev) => prev - 1);
+        setCount((prev) => {
+          const current = prev?.[roomId] || 0;
+
+          return {
+            ...prev,
+            [roomId]: current - 1,
+          };
+        });
+      }else{
+        showToast("first add more rooms", "warning")
+      }
+    }else{
+      showToast("cannot remove rooms", "warning")
+    }
+
+    // setCount((prev) => {
+    //   personSum > 0 && count > 0 ? setPersonSum((prev) => prev - 1) : personSum;
+    //   // console.log("🚀 ~ decrementor ~ prev?.qty:", prev?.qty)
+    //   console.log("🚀 ~ decrementor ~ personSum:", personSum);
+
+    //   return {
+    //     ...prev,
+    //     [roomId]: Math.max((prev?.[roomId] || 0) - 1, 0),
+    //   };
+    // });
   };
 
   const total = room.reduce((acc, r) => {
@@ -91,12 +170,15 @@ export default function HotelBookingPage() {
     return acc + qty * price;
   }, 0);
 
+  let p = 0;
   const handleCart = async () => {
     try {
       const cartItems = Object.entries(count || {})
         .filter(([_, qty]) => qty > 0)
         .map(([roomId, qty]) => {
           const r = room.find((rm) => rm._id === roomId);
+          p = p + qty * r?.noOfPersons;
+
           return {
             roomId,
             quantity: qty,
@@ -106,6 +188,23 @@ export default function HotelBookingPage() {
             noOfPersons: r?.noOfPersons,
           };
         });
+
+      if(dateData.children > personSum*3) {
+        p = 0;
+        setCount(0);
+        setPersonSum(0);
+        showToast("add more rooms to accomdate childrens", "warning");
+        return;
+      }
+
+      if (dateData.adults > p) {
+        p = 0;
+        setCount(0);
+        setPersonSum(0);
+        showToast("add more rooms", "warning");
+        return;
+      }
+      setCount(0);
 
       const response = await axios.post(
         "http://localhost:8000/api/v1/users/cart",
@@ -120,9 +219,12 @@ export default function HotelBookingPage() {
         },
         { withCredentials: true }
       );
+      if (response) showToast(" Rooms are booked", "sucess");
+      navigate("/profile")
 
       console.log("🚀 ~ handleCart response:", response);
     } catch (error) {
+      showToast(" Rooms  cannot be booked", "error");
       console.error(
         "🚀 ~ handleCart error:",
         error.response?.data || error.message
@@ -131,14 +233,10 @@ export default function HotelBookingPage() {
   };
 
   const dateOnClick = useCallback((dateData) => {
-      console.log("🚀 ~ HotelBookingPage ~ dateData:", dateData);
-      // const { checkIn, checkOut } = dateData || {};
-      // console.log("🚀 ~ HotelBookingPage ~ checkIn:", checkIn);
-      // document.querySelector(".rooms-here").style.display = "block";
-      fetchAvailableRooms(dateData);
+    console.log("🚀 ~ HotelBookingPage ~ dateData:", dateData);
 
-    },[]
-  );
+    fetchAvailableRooms(dateData);
+  }, []);
 
   if (!res) {
     return <div>Loading user data...</div>;
@@ -237,7 +335,7 @@ export default function HotelBookingPage() {
                   dateData={dateData}
                   setDateData={setDateData}
                   handleDateChange={handleDateChange}
-                  dateOnClick={ () => dateOnClick(dateData)}
+                  dateOnClick={() => dateOnClick(dateData)}
                 />
               </div>
             </div>
