@@ -17,7 +17,7 @@ export default function UserProfile() {
   const handleOnClick = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v1/users/logout",
+        "https://chai-and-backend.onrender.com/api/v1/users/logout",
         {},
         {
           withCredentials: true,
@@ -37,7 +37,7 @@ export default function UserProfile() {
     const bookingInfo = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/v1/users/user-bookings",
+          "https://chai-and-backend.onrender.com/api/v1/users/user-bookings",
           {
             withCredentials: true,
           }
@@ -68,7 +68,7 @@ export default function UserProfile() {
 
     try {
       const res = await axios.patch(
-        "http://localhost:8000/api/v1/users/avatar-update",
+        "https://chai-and-backend.onrender.com/api/v1/users/avatar-update",
         formData,
         {
           headers: {
@@ -103,7 +103,7 @@ export default function UserProfile() {
     try {
       axios
         .post(
-          "http://localhost:8000/api/v1/users/deleteBooking",
+          "https://chai-and-backend.onrender.com/api/v1/users/deleteBooking",
           {
             book_id,
           },
@@ -113,8 +113,8 @@ export default function UserProfile() {
         )
         .then((res) => {
           // console.log("Booking sucessfully deleted");
-          showToast("Booking sucessfully deleted", "success")
-          bookingInfo()
+          showToast("Booking sucessfully deleted", "success");
+          bookingInfo();
         });
     } catch (error) {
       console.log("🚀 ~ booking not deleted UserProfile ~ error:", error);

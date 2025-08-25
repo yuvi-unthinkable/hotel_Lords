@@ -31,7 +31,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     try {
-      const response = await axios.post("/api/v1/users/login", formData, {
+      const response = await axios.post("https://chai-and-backend.onrender.com/api/v1/users/login", formData, {
         withCredentials: true,
       });
       console.log("🚀 ~ handleSubmit ~ response:", response.data);

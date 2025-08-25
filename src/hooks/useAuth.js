@@ -5,9 +5,9 @@ export default function useAuth() {
   const [isAuth, setIsAuth] = useState(null);
   const [res, setRes] = useState(null);
 
-  useEffect( () => {
-     axios
-      .get("http://localhost:8000/api/v1/users/verify-token", {
+  useEffect(() => {
+    axios
+      .get("https://chai-and-backend.onrender.com/api/v1/users/verify-token", {
         withCredentials: true,
       })
       .then((res) => {
@@ -22,6 +22,6 @@ export default function useAuth() {
       .catch(() => setIsAuth(false));
   }, []);
 
-  console.log("🚀 ~ useAuth ~ isAuth:", isAuth)
+  console.log("🚀 ~ useAuth ~ isAuth:", isAuth);
   return [isAuth, res];
 }

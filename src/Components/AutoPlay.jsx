@@ -11,7 +11,7 @@ function AutoPlay({ dinner }) {
   useEffect( () => {
     const getHotelImage = (async () => {
 
-      await axios.get("http://localhost:8000/api/v1/users/get-hotels", {
+      await axios.get("https://chai-and-backend.onrender.com/api/v1/users/get-hotels", {
         withCredentials : true,
       })
       .then((temp) => {
