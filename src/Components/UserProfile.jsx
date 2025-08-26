@@ -176,7 +176,7 @@ export default function UserProfile() {
                   </span>
                   <span>
                     <strong>Hotel:</strong> {booking.hotel?.hotelName || "N/A"}
-                  </span>
+                  </span>bookingInfo
                   <span>
                     <div className="book-now-ClickButton">
                       <input
@@ -201,12 +201,20 @@ export default function UserProfile() {
                       <span className="col-4">
                         <strong>Price:</strong> {room.totalPrice}
                       </span>
+                      {/* <span className="col-4">
+                        <strong>Price:</strong> {room.checkIn}
+                      </span>
+                      <span className="col-4">
+                        <strong>Price:</strong> {room.checkOut}
+                      </span> */}
                     </div>
                   ))
+                  
                 ) : (
                   <span>No rooms booked.</span>
                 )}
               </div>
+              
             ))}
           </div>
         </div>

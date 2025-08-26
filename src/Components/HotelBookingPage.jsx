@@ -60,8 +60,10 @@ export default function HotelBookingPage() {
         dateData.checkIn &&
         dateData.checkOut &&
         dateData.adults &&
-        (dateData.children || 1)
+        dateData.children  
       ) {
+
+        if(dateData.checkIn > dateData.checkOut) dateData.checkOut = dateData.checkIn;
         console.log("Here is date", dateData);
         try {
           const res = await axios.post(
@@ -192,17 +194,11 @@ export default function HotelBookingPage() {
         });
 
       if (dateData.children > personSum * 3) {
-        p = 0;
-        setCount(0);
-        setPersonSum(0);
         showToast("add more rooms to accomdate childrens", "warning");
         return;
       }
 
       if (dateData.adults > p) {
-        p = 0;
-        setCount(0);
-        setPersonSum(0);
         showToast("add more rooms", "warning");
         return;
       }
@@ -330,7 +326,7 @@ export default function HotelBookingPage() {
 
           <div className="date-section">
             <div className="room-section">
-              <h2> Kindly select the date of your stay...</h2>
+              <h2> Kindly select the details of your stay...</h2>
               <div className="from">
                 <Form
                   insideHotelPage={true}

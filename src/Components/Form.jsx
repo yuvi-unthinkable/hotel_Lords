@@ -1,7 +1,13 @@
 import React from "react";
 import ClickButton from "./ClickButton";
 
-export default function Form({insideHotelPage, dateData,handleDateChange, dateOnClick, handleProceed}) {
+export default function Form({
+  insideHotelPage,
+  dateData,
+  handleDateChange,
+  dateOnClick,
+  handleProceed,
+}) {
   return (
     <>
       <div className="form">
@@ -41,11 +47,11 @@ export default function Form({insideHotelPage, dateData,handleDateChange, dateOn
             <input
               type="date"
               name="checkIn"
-              value={dateData?.checkIn || "dd/mm/yyyy" } 
-              min={new Date().toISOString().split('T')[0]}
+              value={dateData?.checkIn || "dd/mm/yyyy"}
+              min={new Date().toISOString().split("T")[0]}
               onChange={(e) => handleDateChange(e.target.value, "checkIn")}
               required
-            /> 
+            />
           </div>
           <div className="adults">
             <label htmlFor="peoples">Adults</label>
@@ -76,7 +82,6 @@ export default function Form({insideHotelPage, dateData,handleDateChange, dateOn
               value={dateData?.children}
               // max = {dateData?.adults*2}
               onChange={(e) => handleDateChange(e.target.value, "children")}
-
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -102,9 +107,7 @@ export default function Form({insideHotelPage, dateData,handleDateChange, dateOn
             />
           </div>
 
-          <div
-            className={insideHotelPage ? "inside-hotel-page" : "promoc"}
-          >
+          <div className={insideHotelPage ? "inside-hotel-page" : "promoc"}>
             <label htmlFor="promocode">PromoCode</label>
             <input
               name="promocode"
@@ -112,11 +115,16 @@ export default function Form({insideHotelPage, dateData,handleDateChange, dateOn
               placeholder="enter Promocode here"
             />
           </div>
-          <div className="book-now">
+          <div className="book-now inside-hotel-page">
             <p className={insideHotelPage ? "inside-hotel-page" : ""}>
               From <span>2,580</span> INR/Night
             </p>
-            <ClickButton val={insideHotelPage ? "Proceed" : "Book Now"} dateOnClick = {dateOnClick} datePass = {true} />
+            <ClickButton
+              className={insideHotelPage ? "inside-hotel-page" : ""}
+              val={insideHotelPage ? "Proceed" : "Book Now"}
+              dateOnClick={dateOnClick}
+              datePass={true}
+            />
             <p className={insideHotelPage ? "inside-hotel-page" : "red"}>
               Multi Room Bookings
             </p>
