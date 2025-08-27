@@ -4,10 +4,9 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import axios from "axios";
 import { useToast } from "../../hooks/toaster";
-import { Navigate } from "react-router";
 
 export default function SignUp() {
-  const navigate = Navigate();
+  const navigate = useNavigate();
 
   const { showToast } = useToast();
 
@@ -38,7 +37,7 @@ export default function SignUp() {
       );
       setMessage("check you mail for the verification link");
       console.log(message);
-      navigate("/verifyEmail");
+      navigate("/VerifyEmail");
 
       console.log("🚀 ~ handleSubmit ~ response:", response);
       if (response.data.success) {

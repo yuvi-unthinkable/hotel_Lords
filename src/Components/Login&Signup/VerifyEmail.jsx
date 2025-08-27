@@ -1,5 +1,5 @@
 
-function verifyEmail() {
+function VerifyEmail() {
   const [message, setMessage] = useState('Verifying...');
   const searchParams = new URLSearchParams(window.location.search);
   const token = searchParams.get('token');
@@ -28,4 +28,4 @@ function verifyEmail() {
 };
 
 
-export default verifyEmail;
+export default VerifyEmail;

@@ -3,20 +3,11 @@ import SignUp from "./Components/Login&Signup/SignUp";
 import Login from "./Components/Login&Signup/Login";
 import PublicRoute from "./Components/routes/PublicRoute";
 import ProtectedRoute from "./Components/routes/ProtectedRoute";
-import verifyEmail from "./Components/Login&Signup/verifyEmail";
-import { Navigate } from "react-router";
-
-// import UpcomingEvent from "./Components/UpcomingEvents"
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Outlet,
-  createBrowserRouter,
-} from "react-router";
 import Homepage from "./Components/Homepage";
 import UserProfile from "./Components/UserProfile";
 import HotelBookingPage from "./Components/HotelBookingPage";
+import VerifyEmail from "./Components/Login&Signup/VerifyEmail";
+import { createBrowserRouter, Navigate, Route, BrowserRouter as Router,Routes } from "react-router";
 
 const router = createBrowserRouter([
   {
@@ -70,17 +61,17 @@ function App() {
                 <HotelBookingPage />
               </ProtectedRoute>
             }
-          />verifyEmail
+          />VerifyEmail
 
-          <Route path="*" element={<Navigate to="/homepage" replace />} />
 
-          <Route path="verifyEmail"
+          <Route path="VerifyEmail"
           element= {
             <PublicRoute>
-              <verifyEmail/>
+              <VerifyEmail/>
             </PublicRoute>
           }
           />
+          <Route path="*" element={<Navigate to="/homepage" replace />} />
 
         </Routes>
       </Router>
