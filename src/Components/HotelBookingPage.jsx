@@ -21,6 +21,8 @@ export default function HotelBookingPage() {
     checkOut: "",
     adults: 0,
     children: 0,
+    checkInTime  : 0,
+    checkOutTime  : 0
   });
 
   const [personSum, setPersonSum] = useState(0);
@@ -60,7 +62,9 @@ export default function HotelBookingPage() {
         dateData.checkIn &&
         dateData.checkOut &&
         dateData.adults &&
-        dateData.children  
+        dateData.children  &&
+        dateData.checkInTime &&
+        dateData.checkOutTime 
       ) {
 
         if(dateData.checkIn > dateData.checkOut) dateData.checkOut = dateData.checkIn;
@@ -214,6 +218,8 @@ export default function HotelBookingPage() {
           adults: dateData.adults,
           children: dateData.children,
           totalAmount: total,
+          checkInTime : dateData.checkInTime,
+          checkOutTime : dateData.checkOutTime
         },
         { withCredentials: true }
       );

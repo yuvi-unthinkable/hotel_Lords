@@ -53,6 +53,22 @@ export default function Form({
               required
             />
           </div>
+          <div className="checkInTime">
+            <label htmlFor="checkInTime">CheckIn Time</label>
+            <select
+              name="checkInTime"
+              id="checkInTime"
+              value={dateData?.checkInTime}
+              // max = {dateData?.adults*2}
+              onChange={(e) => handleDateChange(e.target.value, "checkInTime")}
+            >
+              {Array.from({ length: 24 }, (_, i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="adults">
             <label htmlFor="peoples">Adults</label>
             <select
@@ -62,16 +78,11 @@ export default function Form({
               onChange={(e) => handleDateChange(e.target.value, "adults")}
               required
             >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
+              {Array.from({ length: 10 }, (_, i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
             </select>
           </div>
           <div className="child">
@@ -83,16 +94,27 @@ export default function Form({
               // max = {dateData?.adults*2}
               onChange={(e) => handleDateChange(e.target.value, "children")}
             >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
+              {Array.from({ length: 10 }, (_, i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="checkOutTime">
+            <label htmlFor="checkOutTime">CheckOut Time</label>
+            <select
+              name="checkOutTime"
+              id="checkOutTime"
+              value={dateData?.checkOutTime}
+              // max = {dateData?.adults*2}
+              onChange={(e) => handleDateChange(e.target.value, "checkOutTime")}
+            >
+              {Array.from({ length: 24 }, (_, i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
             </select>
           </div>
           <div className="checkout">

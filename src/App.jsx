@@ -69,7 +69,7 @@ function App() {
                 <HotelBookingPage />
               </ProtectedRoute>
             }
-          />
+          />verifyEmail
 
           <Route path="*" element={<Navigate to="/homepage" replace />} />
 

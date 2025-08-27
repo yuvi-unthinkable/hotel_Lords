@@ -17,7 +17,6 @@ export default function SignUp() {
   });
 
   const [message, setMessage] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,12 +31,15 @@ export default function SignUp() {
       const file = new FormData();
       console.log("🚀 ~ handleSubmit ~ selectedFile:", formData);
 
-      const response = await axios.post("/api/v1/users/register", formData);
+      const response = await axios.post("https://chai-and-backend.onrender.com/api/v1/users/register", formData);
+      setMessage("check you mail for the verification link")
+      console.log(message);
 
-      if (response.data.sucess) {
+      if (response.data.success) {
         setMessage(response.data.message);
         showToast("Registered Sucesssfully", "sucess")
-        navigate("/login");
+        if (!user.isVerified) throw new ApiError(401, "Please verify your email");
+
       } else {
         setMessage("signup failed");
       }
