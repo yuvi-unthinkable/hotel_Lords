@@ -4,10 +4,12 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import axios from "axios";
 import { useToast } from "../../hooks/toaster";
+import { Navigate } from "react-router";
 
 export default function SignUp() {
+  const navigate = Navigate();
 
-  const {showToast} = useToast()
+  const { showToast } = useToast();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -17,7 +19,6 @@ export default function SignUp() {
   });
 
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -31,20 +32,25 @@ export default function SignUp() {
       const file = new FormData();
       console.log("🚀 ~ handleSubmit ~ selectedFile:", formData);
 
-      const response = await axios.post("https://chai-and-backend.onrender.com/api/v1/users/register", formData);
-      setMessage("check you mail for the verification link")
+      const response = await axios.post(
+        "https://chai-and-backend.onrender.com/api/v1/users/register",
+        formData
+      );
+      setMessage("check you mail for the verification link");
       console.log(message);
+      navigate("/verifyEmail");
 
+      console.log("🚀 ~ handleSubmit ~ response:", response);
       if (response.data.success) {
         setMessage(response.data.message);
-        showToast("Registered Sucesssfully", "sucess")
-        if (!user.isVerified) throw new ApiError(401, "Please verify your email");
+        showToast("Registered Sucesssfully", "sucess");
 
+        // if (!user.isVerified) throw new ApiError(401, "Please verify your email");
       } else {
         setMessage("signup failed");
       }
     } catch (error) {
-      showToast("Registration Failed", "error")
+      showToast("Registration Failed", "error");
       console.log("Error :", error);
       setMessage("something went wrong");
     }
@@ -60,7 +66,7 @@ export default function SignUp() {
           <img
             src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
             alt="logo"
-            style={{width:"70px"}}
+            style={{ width: "70px" }}
           />
           {/* <h1>
             <strong>Hotel </strong>Lords
@@ -171,7 +177,7 @@ export default function SignUp() {
                 formMethod="post"
               />
               <Link to="/login" className={styles.switchBack}>
-                <p >
+                <p>
                   Already have an account? <span>Signin</span>
                 </p>
               </Link>

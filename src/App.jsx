@@ -3,6 +3,7 @@ import SignUp from "./Components/Login&Signup/SignUp";
 import Login from "./Components/Login&Signup/Login";
 import PublicRoute from "./Components/routes/PublicRoute";
 import ProtectedRoute from "./Components/routes/ProtectedRoute";
+import verifyEmail from "./Components/Login&Signup/verifyEmail";
 import { Navigate } from "react-router";
 
 // import UpcomingEvent from "./Components/UpcomingEvents"
@@ -72,6 +73,14 @@ function App() {
           />verifyEmail
 
           <Route path="*" element={<Navigate to="/homepage" replace />} />
+
+          <Route path="verifyEmail"
+          element= {
+            <PublicRoute>
+              <verifyEmail/>
+            </PublicRoute>
+          }
+          />
 
         </Routes>
       </Router>

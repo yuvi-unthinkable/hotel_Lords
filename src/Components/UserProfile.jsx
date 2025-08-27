@@ -23,6 +23,8 @@ export default function UserProfile() {
           withCredentials: true,
         }
       );
+      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
       if (res) showToast("User Logged out Sucessfully", "success");
 
       console.log(res);
@@ -128,7 +130,7 @@ export default function UserProfile() {
       <div className="profile section">
         <div className="profile-upper-section">
           <div className="profile-image">
-            <img src={res?.user?.avatar} alt="pic"/>
+            <img src={res?.user?.avatar} alt="pic" />
             <p onClick={handleAvatarClick}>
               <i class="fa-solid fa-pen"></i>
               <input
@@ -176,7 +178,8 @@ export default function UserProfile() {
                   </span>
                   <span>
                     <strong>Hotel:</strong> {booking.hotel?.hotelName || "N/A"}
-                  </span>bookingInfo
+                  </span>
+                  bookingInfo
                   <span>
                     <div className="book-now-ClickButton">
                       <input
@@ -209,12 +212,10 @@ export default function UserProfile() {
                       </span> */}
                     </div>
                   ))
-                  
                 ) : (
                   <span>No rooms booked.</span>
                 )}
               </div>
-              
             ))}
           </div>
         </div>
