@@ -61,7 +61,7 @@ function App() {
                 <HotelBookingPage />
               </ProtectedRoute>
             }
-          />VerifyEmail
+          />
 
 
           <Route path="VerifyEmail"
