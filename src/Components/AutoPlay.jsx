@@ -45,7 +45,7 @@ function AutoPlay({ dinner }) {
     speed: 2000,
     autoplaySpeed: 4000,
     cssEase: "ease-in-out",
-    arrows: true,
+    arrows: false,
   };
   return (
     // <div className="carousel-parent">

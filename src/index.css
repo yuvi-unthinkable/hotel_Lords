@@ -241,7 +241,9 @@ marquee {
   justify-content: space-around;
   align-items: center;
   color: rgba(16, 12, 4, 0.8);
+  flex-wrap: wrap;
 }
+
 
 .detail-form div {
   display: flex;
@@ -463,30 +465,10 @@ select {
   .carousel-container {
     height: 85vh;
   }
-  .detail-form {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+
   #card-about-data {
     font-weight: 300;
     color: rgba(94, 93, 92, 0.8);
     font-size: 0.7rem;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .checkout {
-    width: 115px;
-  }
-  .promoc {
-    width: 144px;
-  }
-}
-
-@media screen and (max-width: 710px) {
-  .icon-card {
-    width: 150px;
-    height: 135px;
-    margin: 6px;
   }
 }

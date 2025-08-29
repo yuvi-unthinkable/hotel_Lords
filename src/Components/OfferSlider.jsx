@@ -7,15 +7,18 @@ import ClickButton from "./ClickButton";
 
 export const srcArray = [
   {
-    source: "https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1025,h_769,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/1024x768_5c4c120a",
+    source:
+      "https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1025,h_769,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/1024x768_5c4c120a",
     data: "Season’s Treat @5999",
   },
   {
-    source: "https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1024,h_768,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/WhatsApp_Image_2025-07-21_at_11.51.12",
+    source:
+      "https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1024,h_768,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/WhatsApp_Image_2025-07-21_at_11.51.12",
     data: "Jawai Wildlife Leopard Safari Offer",
   },
   {
-    source: "https://assets.simplotel.com/simplotel/image/upload/x_33,y_0,w_1365,h_1024,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/ChatGPT_Image_May_20,_2025,_12_12_38_PM",
+    source:
+      "https://assets.simplotel.com/simplotel/image/upload/x_33,y_0,w_1365,h_1024,r_0,c_crop/q_80,w_1600,dpr_1,f_auto,fl_progressive,c_limit/lords-hotels-resorts/ChatGPT_Image_May_20,_2025,_12_12_38_PM",
     data: "Monsoon Special Offer",
   },
   // {
@@ -37,7 +40,32 @@ export default function OfferSlider() {
     autoplaySpeed: 3000,
     cssEase: "ease-in-out",
     beforeChange: (_, newIndex) => setCurrentIndex(newIndex),
+    responsive: [
+      {
+        breakpoint: 1024, // screens < 1024px
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // screens < 768px (tablet)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480, // screens < 480px (mobile)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows : false
+        },
+      },
+    ],
   };
+
   ClickButton;
 
   return (

@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="foot-3">
+      <div className="foot-3 hidden md-block">
         <div className="foot-head">Quick Links</div>
         <div className="foot-3-data">
           <div className="quick-link1">

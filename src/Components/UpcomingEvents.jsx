@@ -42,7 +42,32 @@ export default function UppcomingEvents() {
     autoplaySpeed: 3000,
     cssEase: "ease-in-out",
     beforeChange: (_, newIndex) => setCurrentIndex(newIndex),
+    responsive: [
+    {
+      breakpoint: 1024, // screens < 1024px
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 768, // screens < 768px (tablet)
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480, // screens < 480px (mobile)
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows:false,
+      },
+    },
+  ],
   };
+  
 
   return (
       <Slider {...settings}>

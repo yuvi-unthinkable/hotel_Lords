@@ -312,3 +312,55 @@ body::-webkit-scrollbar {
   position: relative;
   margin-bottom: 4rem;
 }
+@media screen and (max-width: 1200px) {
+  .checkout {
+    width: 115px;
+  }
+  .promoc {
+    width: 144px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .icon-card {
+    width: 150px;
+    height: 135px;
+    margin: 6px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .icon-card {
+    width: 140px;
+  }
+  .detail-form div {
+    padding: 3px;
+  }
+  .location-select {
+    width: 140px;
+  }
+  .carousel-container .d-block,
+  .carousel-container {
+    width: auto !important;
+    height: 63vh !important;
+  }
+  #appreciation {
+    margin: 5% 10%;
+  }
+  footer {
+    margin: 0 !important;
+    flex-direction: column;
+    align-items: baseline;
+    /* margin: 0; */
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  .dining-right-part {
+    box-shadow: 18px 6px 0 #4213189c;
+  }
+}
