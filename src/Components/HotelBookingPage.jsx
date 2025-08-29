@@ -22,8 +22,8 @@ export default function HotelBookingPage() {
     checkOut: "",
     adults: 0,
     children: 0,
-    checkInTime  : 0,
-    checkOutTime  : 0
+    checkInTime: 0,
+    checkOutTime: 0,
   });
 
   const [personSum, setPersonSum] = useState(0);
@@ -34,12 +34,9 @@ export default function HotelBookingPage() {
     const fetchHotel = async () => {
       try {
         await axios
-          .get(
-            `https://chai-and-backend.onrender.com/api/v1/users/hotel-details/${id}`,
-            {
-              withCredentials: true,
-            }
-          )
+          .get(`http://localhost:8000/api/v1/users/hotel-details/${id}`, {
+            withCredentials: true,
+          })
           .then((res) => {
             setRes(res?.data?.data?.hotel);
 
@@ -63,16 +60,16 @@ export default function HotelBookingPage() {
         dateData.checkIn &&
         dateData.checkOut &&
         dateData.adults &&
-        dateData.children  &&
+        dateData.children &&
         dateData.checkInTime &&
-        dateData.checkOutTime 
+        dateData.checkOutTime
       ) {
-
-        if(dateData.checkIn > dateData.checkOut) dateData.checkOut = dateData.checkIn;
+        if (dateData.checkIn > dateData.checkOut)
+          dateData.checkOut = dateData.checkIn;
         console.log("Here is date", dateData);
         try {
           const res = await axios.post(
-            `https://chai-and-backend.onrender.com/api/v1/users/rooms-available/${id}`,
+            `http://localhost:8000/api/v1/users/rooms-available/${id}`,
             { dateData }
           );
           showToast("Room details fetched", "success");
@@ -210,7 +207,7 @@ export default function HotelBookingPage() {
       setCount(0);
 
       const response = await axios.post(
-        "https://chai-and-backend.onrender.com/api/v1/users/cart",
+        "http://localhost:8000/api/v1/users/cart",
         {
           hotelId: res?._id,
           cartItems,
@@ -219,8 +216,8 @@ export default function HotelBookingPage() {
           adults: dateData.adults,
           children: dateData.children,
           totalAmount: total,
-          checkInTime : dateData.checkInTime,
-          checkOutTime : dateData.checkOutTime
+          checkInTime: dateData.checkInTime,
+          checkOutTime: dateData.checkOutTime,
         },
         { withCredentials: true }
       );
@@ -305,7 +302,6 @@ export default function HotelBookingPage() {
                           {count[room._id]} x {room.roomType} ={" "}
                           {Number(count[room._id] || 0) *
                             Number(room.price || 0)}
-                  
                         </p>
                       ) : null
                     )}
@@ -379,7 +375,7 @@ export default function HotelBookingPage() {
           <div className="feedbacks">
             <h2>What Our Customer's Say</h2>
             {/* {console.log("the response", res)} */}
-            <Feedback hotelId = {res._id}/>
+            <Feedback hotelId={res._id} />
           </div>
         </div>
       </div>

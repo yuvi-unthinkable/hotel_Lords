@@ -5,13 +5,9 @@ import { Link } from "react-router";
 import axios from "axios";
 import { useToast } from "../../hooks/toaster";
 
-
-
 export default function Login() {
+  const { showToast } = useToast();
 
-  const {showToast} = useToast();
-  
-  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,9 +27,13 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     try {
-      const response = await axios.post("https://chai-and-backend.onrender.com/api/v1/users/login", formData, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/users/login",
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       console.log("🚀 ~ handleSubmit ~ response:", response.data);
       if (response.data.sucess) {
         const user = response.data;
@@ -41,14 +41,13 @@ export default function Login() {
         setToken(response.data.acessToken);
         localStorage.setItem("refreshToken", response.data.refreshToken);
         localStorage.setItem("authToken", response.data.acessToken);
-        showToast("Logged in sucessfully", "success")
+        showToast("Logged in sucessfully", "success");
         navigate("/homepage");
       } else {
-       
         setMessage("Login failed");
       }
     } catch (error) {
-       showToast("Invalid Credentials", "error")
+      showToast("Invalid Credentials", "error");
       console.log("Error :", error);
       setMessage("something went wrong");
     }
@@ -67,7 +66,6 @@ export default function Login() {
             <strong>Hotel </strong>Lords
           </h1> */}
         </nav>
-
 
         <div className={styles["main-content"]}>
           <div className={styles["left-section"]}>

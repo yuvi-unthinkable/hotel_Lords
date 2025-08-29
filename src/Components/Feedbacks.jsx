@@ -13,7 +13,7 @@ export default function Feedback({ hotelId }) {
       try {
         axios
           .get(
-            `https://chai-and-backend.onrender.com/api/v1/users/getHotelFeedbacks/${hotelId}`,
+            `http://localhost:8000/api/v1/users/getHotelFeedbacks/${hotelId}`,
             {
               withCredentials: true,
             }
@@ -54,7 +54,7 @@ export default function Feedback({ hotelId }) {
     <div className="room-slider">
       <Slider {...settings}>
         {Array.isArray(res?.data?.data)
-          ? res.data.data.map((feedback,index) => (
+          ? res.data.data.map((feedback, index) => (
               <div className=" p-4 mr-3 w-full feedback-card">
                 <FeedbackCard
                   key={index}

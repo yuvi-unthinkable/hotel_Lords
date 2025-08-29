@@ -17,7 +17,7 @@ export default function UserProfile() {
   const handleOnClick = async () => {
     try {
       const res = await axios.post(
-        "https://chai-and-backend.onrender.com/api/v1/users/logout",
+        "http://localhost:8000/api/v1/users/logout",
         {},
         {
           withCredentials: true,
@@ -39,7 +39,7 @@ export default function UserProfile() {
     const bookingInfo = async () => {
       try {
         const res = await axios.get(
-          "https://chai-and-backend.onrender.com/api/v1/users/user-bookings",
+          "http://localhost:8000/api/v1/users/user-bookings",
           {
             withCredentials: true,
           }
@@ -70,7 +70,7 @@ export default function UserProfile() {
 
     try {
       const res = await axios.patch(
-        "https://chai-and-backend.onrender.com/api/v1/users/avatar-update",
+        "http://localhost:8000/api/v1/users/avatar-update",
         formData,
         {
           headers: {
@@ -105,7 +105,7 @@ export default function UserProfile() {
     try {
       axios
         .post(
-          "https://chai-and-backend.onrender.com/api/v1/users/deleteBooking",
+          "http://localhost:8000/api/v1/users/deleteBooking",
           {
             book_id,
           },

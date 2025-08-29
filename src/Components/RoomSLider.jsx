@@ -12,12 +12,9 @@ export default function RoomSLider() {
     const fetchHotel = async () => {
       try {
         axios
-          .get(
-            "https://chai-and-backend.onrender.com/api/v1/users/get-hotels",
-            {
-              withCredentials: true,
-            }
-          )
+          .get("http://localhost:8000/api/v1/users/get-hotels", {
+            withCredentials: true,
+          })
           .then((temp) => {
             setRes(temp.data);
             // console.log("🚀 ~ RoomSLider ~ res.data:", res)

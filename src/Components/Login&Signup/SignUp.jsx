@@ -32,7 +32,7 @@ export default function SignUp() {
       console.log("🚀 ~ handleSubmit ~ selectedFile:", formData);
 
       const response = await axios.post(
-        "https://chai-and-backend.onrender.com/api/v1/users/register",
+        "http://localhost:8000/api/v1/users/register",
         formData
       );
       setMessage("check you mail for the verification link");
