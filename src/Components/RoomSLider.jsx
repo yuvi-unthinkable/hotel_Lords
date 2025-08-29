@@ -12,9 +12,12 @@ export default function RoomSLider() {
     const fetchHotel = async () => {
       try {
         axios
-          .get("http://localhost:8000/api/v1/users/get-hotels", {
-            withCredentials: true,
-          })
+          .get(
+            "https://chai-and-backend.onrender.com/api/v1/users/get-hotels",
+            {
+              withCredentials: true,
+            }
+          )
           .then((temp) => {
             setRes(temp.data);
             // console.log("🚀 ~ RoomSLider ~ res.data:", res)
@@ -43,29 +46,29 @@ export default function RoomSLider() {
       setCurrentIndex(newIndex);
     },
     responsive: [
-    {
-      breakpoint: 1024, // screens < 1024px
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
+      {
+        breakpoint: 1024, // screens < 1024px
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
       },
-    },
-    {
-      breakpoint: 768, // screens < 768px (tablet)
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
+      {
+        breakpoint: 768, // screens < 768px (tablet)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
       },
-    },
-    {
-      breakpoint: 480, // screens < 480px (mobile)
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows:false,
+      {
+        breakpoint: 480, // screens < 480px (mobile)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
       },
-    },
-  ],
+    ],
   };
 
   // useEffect(() => {

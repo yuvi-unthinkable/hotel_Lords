@@ -7,7 +7,9 @@ function VerifyEmail() {
   useEffect(() => {
     const verify = async () => {
       try {
-        await axios.get(`http://localhost:8000/api/v1/users/verify/:token`);
+        await axios.get(
+          `https://chai-and-backend.onrender.com/api/v1/users/verify/:token`
+        );
         setMessage("Email verified successfully!");
         console.log(message);
       } catch {

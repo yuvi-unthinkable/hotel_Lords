@@ -7,7 +7,7 @@ export default function useAuth() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/v1/users/verify-token", {
+      .get("https://chai-and-backend.onrender.com/api/v1/users/verify-token", {
         withCredentials: true,
       })
       .then((res) => {

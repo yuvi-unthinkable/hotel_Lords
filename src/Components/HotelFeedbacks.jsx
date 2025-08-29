@@ -18,7 +18,9 @@ function HotelFeedbacks() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/v1/users/bookingInfo/${id}`)
+      .get(
+        `https://chai-and-backend.onrender.com/api/v1/users/bookingInfo/${id}`
+      )
       .then((res) => {
         console.log("this is the response object ", res);
         setRes(res.data?.data);
@@ -28,11 +30,12 @@ function HotelFeedbacks() {
   const handleClick = (value) => {
     setRating(value);
   };
+  
 
   const handleSubmit = async () => {
     try {
       const submit = await axios.post(
-        `http://localhost:8000/api/v1/users/feedbackSubmit`,
+        `https://chai-and-backend.onrender.com/api/v1/users/feedbackSubmit`,
         {
           hotel: await res?.hotel,
           user: await res?.user,

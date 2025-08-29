@@ -13,7 +13,7 @@ export default function Feedback({ hotelId }) {
       try {
         axios
           .get(
-            `http://localhost:8000/api/v1/users/getHotelFeedbacks/${hotelId}`,
+            `https://chai-and-backend.onrender.com/api/v1/users/getHotelFeedbacks/${hotelId}`,
             {
               withCredentials: true,
             }
@@ -64,7 +64,7 @@ export default function Feedback({ hotelId }) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows:false,
+          arrows: false,
         },
       },
     ],

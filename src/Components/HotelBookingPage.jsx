@@ -34,9 +34,12 @@ export default function HotelBookingPage() {
     const fetchHotel = async () => {
       try {
         await axios
-          .get(`http://localhost:8000/api/v1/users/hotel-details/${id}`, {
-            withCredentials: true,
-          })
+          .get(
+            `https://chai-and-backend.onrender.com/api/v1/users/hotel-details/${id}`,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             setRes(res?.data?.data?.hotel);
 
@@ -69,7 +72,7 @@ export default function HotelBookingPage() {
         console.log("Here is date", dateData);
         try {
           const res = await axios.post(
-            `http://localhost:8000/api/v1/users/rooms-available/${id}`,
+            `https://chai-and-backend.onrender.com/api/v1/users/rooms-available/${id}`,
             { dateData }
           );
           showToast("Room details fetched", "success");
@@ -207,7 +210,7 @@ export default function HotelBookingPage() {
       setCount(0);
 
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/cart",
+        "https://chai-and-backend.onrender.com/api/v1/users/cart",
         {
           hotelId: res?._id,
           cartItems,
