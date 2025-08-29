@@ -13,11 +13,13 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@re-dev/react-truncate": "^0.5.2",
         "@tailwindcss/vite": "^4.1.11",
         "axios": "^1.11.0",
         "date-fns": "^4.1.0",
         "datepicker": "^0.0.0",
         "gh-pages": "^6.3.0",
+        "lucide-react": "^0.542.0",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-router": "^7.7.1",

@@ -14,8 +14,8 @@ export default function Navbar() {
   //   setDisplaySidebar((prevdisplaySidebar) => !prevdisplaySidebar);
   // };
 
-  const [isAuth, res] =  useAuth();
-  console.log("🚀 ~ Navbar ~ res ka data:", res)
+  const [isAuth, res] = useAuth();
+  console.log("🚀 ~ Navbar ~ res ka data:", res);
 
   const cities = [
     "Ahmedabad",
@@ -66,11 +66,10 @@ export default function Navbar() {
         <div className="non-resposive-menu-contents">
           <li className="logo-img">
             <Link to={"/homepage"}>
-            <img
-              src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
-              alt="Logo"
-              
-            />
+              <img
+                src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
+                alt="Logo"
+              />
             </Link>
           </li>
         </div>
@@ -311,10 +310,12 @@ export default function Navbar() {
 
         <div className="visible-at-small-screen">
           <li className="logo-img">
-            <img
-              src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
-              alt="Logo"
-            />
+            <Link to={"/homepage"}>
+              <img
+                src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
+                alt="Logo"
+              />
+            </Link>
           </li>
         </div>
         <li>

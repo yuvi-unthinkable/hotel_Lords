@@ -8,6 +8,7 @@ import UserProfile from "./Components/UserProfile";
 import HotelBookingPage from "./Components/HotelBookingPage";
 import VerifyEmail from "./Components/Login&Signup/VerifyEmail";
 import { createBrowserRouter, Navigate, Route, BrowserRouter as Router,Routes } from "react-router";
+import HotelFeedbacks from "./Components/HotelFeedbacks";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,13 @@ function App() {
             </PublicRoute>
           }
           />
+
+          <Route path="bookingInfo/:id" element= {
+            
+              <HotelFeedbacks/>
+        
+            }/>
+
           <Route path="*" element={<Navigate to="/homepage" replace />} />
 
         </Routes>

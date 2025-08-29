@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Form from "./Form";
 import "./hotelBooking.css";
 import { useToast } from "../hooks/toaster";
+import Feedback from "./Feedbacks";
 
 export default function HotelBookingPage() {
   const navigate = useNavigate();
@@ -304,8 +305,7 @@ export default function HotelBookingPage() {
                           {count[room._id]} x {room.roomType} ={" "}
                           {Number(count[room._id] || 0) *
                             Number(room.price || 0)}
-                          {/* {console.log("🚀 ~ total:", total)}
-                        {`Total = ${total}`} */}
+                  
                         </p>
                       ) : null
                     )}
@@ -376,6 +376,11 @@ export default function HotelBookingPage() {
               </div>
             </div>
           ))}
+          <div className="feedbacks">
+            <h2>What Our Customer's Say</h2>
+            {/* {console.log("the response", res)} */}
+            <Feedback hotelId = {res._id}/>
+          </div>
         </div>
       </div>
 

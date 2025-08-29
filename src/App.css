@@ -25,8 +25,9 @@ body::-webkit-scrollbar {
 }
 
 .room-slider {
-  margin-bottom: 1.659%;
-  width: 100%;
+  /* margin-bottom: 1.659%; */
+  /* width: 100%; */
+  margin-bottom: 1rem;
 }
 
 #room-card {
@@ -297,4 +298,17 @@ body::-webkit-scrollbar {
 
 #hotelId {
   padding: 0 5.73%;
+}
+
+.feedback-card {
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+.feedback-content {
+  margin: 3rem;
+  padding: 1rem;
+  top: 50px;
+  position: relative;
+  margin-bottom: 4rem;
 }
