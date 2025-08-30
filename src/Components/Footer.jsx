@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="address-head">
           <div className="foot-head">Address</div>
           <p>Lords Hotels & Resorts</p>
-          <p>202, 2nd Floor, Morya Blue Moon, Opposite Citi Mall, Off </p>
+          <p>202, 2nd Floor, Morya Blue Moon, Opposite Citi Mall</p>
           <p> New Link Road, Andheri West, Mumbai - 400053</p>
         </div>
       </div>
