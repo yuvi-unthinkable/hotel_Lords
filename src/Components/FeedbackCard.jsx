@@ -21,7 +21,7 @@ export const FeedbackCard = ({ name, review, rating }) => {
       </div>
 
       {/* Review text */}
-      <p className="text-gray-700 italic mb-3 leading-relaxed"><ShowMore lines={3}>"{review}"</ShowMore></p>
+      <ShowMore lines={3}><p className="text-gray-700 italic mb-3 leading-relaxed">"{review}"</p></ShowMore>
 
       {/* Reviewer */}
       <h4 className="font-semibold text-sm text-gray-900 mt-1.5 text-right">— {name}</h4>

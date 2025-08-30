@@ -2,9 +2,6 @@
 
 .booking-page-container {
   background: url(res.photos[0].url);
-}
-
-.booking-page-container {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -185,8 +182,6 @@ padding: 1.5rem; */
   padding: 5px;
 }
 
-
-
 /* Responsive behavior */
 @media (max-width: 768px) {
   .body-section {
@@ -199,5 +194,31 @@ padding: 1.5rem; */
 
   .other-images img {
     height: 120px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main-image img {
+    height: 257px;
+  }
+  .image-grid {
+    gap: 0.5rem;
+    grid-auto-flow: row;
+  }
+  .other-images {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .booking-page-container {
+    padding: 2rem 0;
+    padding-top: 115px;
+  }
+  .booking-hotel-about {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .main-image,
+  .other-images {
+    /* width: 90% !important; */
   }
 }

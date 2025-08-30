@@ -6,9 +6,9 @@ export default function Footer() {
     <footer className="col-xs-12">
       {/* 1st section containing logo and address */}
       <div className="foot-1">
-        <div className="foot1-image">
+        <div className="foot1-image flex justify-center">
           <img
-            src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_200,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
+            src="https://assets.simplotel.com/simplotel/image/upload/x_0,y_0,w_1315,h_990,r_0,c_crop,q_80,dpr_1,f_auto,fl_progressive/w_355,h_130,f_auto,c_fit/lords-hotels-resorts-(be-only)/lords_logo_wa"
             alt="logo"
           />
         </div>

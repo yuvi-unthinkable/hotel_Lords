@@ -276,19 +276,44 @@ export default function HotelBookingPage() {
                 </div>
               </div>
               <div className="booking-hotel-about">
-                <h3>Amenities</h3>
-                <p>
-                  <li>Jacuzzi</li>
-                  <li>Spa</li>
-                  <li>Swimming Pool</li>
-                  <li>Gym</li>
-                  <li>Restaurant</li>
-                  <li>Indoor Games</li>
-                  <li>Butler Services</li>
-                  <li>24-hour Room Service</li>
-                  <li>Kids Play Area</li>
-                  <li>Bar</li>
-                </p>
+                <h3>Highlights</h3>
+               <div className="highlights-features flex">
+                 <div className="hotel-highlights flex flex-col items-center">
+                  <img src="https://cdn6.agoda.net/images/property/highlights/location.svg" alt=""  />
+                  <p>In heart of Bangalore</p>
+                </div>
+                <div className="hotel-highlights">
+                  <img src="https://cdn6.agoda.net/images/property/highlights/like.svg" alt=""  />
+                  <p>great for activities</p>
+                </div>
+                <div className="hotel-highlights">
+                  <img src="https://cdn6.agoda.net/images/property/highlights/SafetyFeatures.svg" alt=""  />
+                  <p>Hygiene Plus</p>
+                </div>
+                <div className="hotel-highlights">
+                  <img src="https://cdn6.agoda.net/images/property/highlights/transfer.svg" alt=""  />
+                  <p>Airport Transfer</p>
+                </div>
+                <div className="hotel-highlights">
+                  <img src="https://cdn6.agoda.net/images/property/highlights/door.svg" alt=""  />
+                  <p>Check-in [24-hour]</p>
+                </div>
+               </div>
+                
+              </div>
+
+              <div className="booking-hotel-about ">
+                <h3>Facilities</h3>
+                <div className="facilities flex flex-wrap ">
+
+                <span><i class="fa-solid fa-check"></i>Free Wifi</span>
+                <span><i class="fa-solid fa-check"></i>Pool with view</span>
+                <span><i class="fa-solid fa-check"></i>Free Parking</span>
+                <span><i class="fa-solid fa-check"></i>Spa</span>
+                <span><i class="fa-solid fa-check"></i>Front-dest [24-hour]</span>
+                <span><i class="fa-solid fa-check"></i>Fitness Center</span>
+                </div>
+
               </div>
             </div>
             <div className="booking-right-section">
