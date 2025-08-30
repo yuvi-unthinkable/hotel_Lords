@@ -20,7 +20,7 @@ export default function RoomSLider() {
           )
           .then((temp) => {
             setRes(temp.data);
-            // console.log("🚀 ~ RoomSLider ~ res.data:", res)
+            console.log("🚀 ~ RoomSLider ~ res.data:", res)
           });
       } catch (error) {
         console.log("🚀 ~ error in getting hotel details:", error);
@@ -71,6 +71,8 @@ export default function RoomSLider() {
     ],
   };
 
+  console.log("this is hotel response ", res);
+
   // useEffect(() => {
   //   console.log("Current Slide Index:", currentIndex);
   // }, [currentIndex]);
@@ -84,6 +86,7 @@ export default function RoomSLider() {
             source={hotel.photos?.[0]?.url}
             data={hotel?.hotelName}
             res={hotel?._id}
+            aboutData = {hotel?.hotelAboutData}
           />
         ))}
       </Slider>

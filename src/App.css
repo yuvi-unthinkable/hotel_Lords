@@ -261,7 +261,7 @@ body::-webkit-scrollbar {
 } */
 .slick-prev:before,
 .slick-next:before {
-  font-size: 60px !important;
+  font-size: 40px !important;
   opacity: 1.2;
 }
 .slick-prev {
@@ -290,10 +290,12 @@ body::-webkit-scrollbar {
   margin-bottom: 1.659%;
 }
 
+
 .hotel-Data {
   padding-top: 1.659% !important ;
   margin-bottom: 1.659%;
   width: 100%;
+
 }
 
 #hotelId {
