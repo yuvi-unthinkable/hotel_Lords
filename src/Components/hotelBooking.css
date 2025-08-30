@@ -87,7 +87,7 @@
 }
 
 /* Right section (Price) */
-.booking-right-section {
+.sub-booking-right-section {
   background-color: rgba(236, 236, 236, 0.85);
   padding: 1.5rem;
   border-radius: 10px;
@@ -140,6 +140,8 @@ padding: 1.5rem; */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+  margin-bottom: 5px;
+
 }
 .room-heading {
   padding: 2px;
@@ -216,9 +218,16 @@ padding: 1.5rem; */
   .booking-hotel-about {
     padding: 1.5rem 0.5rem;
   }
-  
-  .main-image,
-  .other-images {
-    /* width: 90% !important; */
+  .room-image {
+    width: auto;
+    height: auto;
+  }
+
+  .room-section-data {
+    flex-direction: column;
+  }
+
+  .room-about-data {
+    flex-direction: row;
   }
 }

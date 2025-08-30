@@ -103,6 +103,16 @@ export default function HotelBookingPage() {
   // if(roomFetched) {useEffect(fetchAvailableRooms(),dateData)};
 
   const handleDateChange = (value, name) => {
+    if (
+      dateData.checkInTime != 0 &&
+      dateData.checkOutTime != 0 &&
+      dateData.checkIn === dateData.checkOut &&
+      dateData.checkInTime < dateData.checkOutTime + 4
+    ) {
+      showToast("Stay time should be atleast 4 hours", "warning");
+      return;
+    }
+
     setDateData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -260,8 +270,10 @@ export default function HotelBookingPage() {
         }}
       >
         <div className="booking-page-container ">
-          <div className="hotel-heading">
-            <h2>{res.hotelName}</h2>
+          <div className="hotel-heading mb-6">
+            <h2 className="text-3xl font-bold text-gray-800 leading-tight">
+              {res.hotelName}
+            </h2>
           </div>
 
           <div className="body-section">
@@ -277,77 +289,114 @@ export default function HotelBookingPage() {
               </div>
               <div className="booking-hotel-about">
                 <h3>Highlights</h3>
-               <div className="highlights-features flex">
-                 <div className="hotel-highlights flex flex-col items-center">
-                  <img src="https://cdn6.agoda.net/images/property/highlights/location.svg" alt=""  />
-                  <p>In heart of Bangalore</p>
+                <div className="highlights-features flex">
+                  <div className="hotel-highlights flex flex-col items-center">
+                    <img
+                      src="https://cdn6.agoda.net/images/property/highlights/location.svg"
+                      alt=""
+                    />
+                    <p>In heart of Bangalore</p>
+                  </div>
+                  <div className="hotel-highlights">
+                    <img
+                      src="https://cdn6.agoda.net/images/property/highlights/like.svg"
+                      alt=""
+                    />
+                    <p>great for activities</p>
+                  </div>
+                  <div className="hotel-highlights">
+                    <img
+                      src="https://cdn6.agoda.net/images/property/highlights/SafetyFeatures.svg"
+                      alt=""
+                    />
+                    <p>Hygiene Plus</p>
+                  </div>
+                  <div className="hotel-highlights">
+                    <img
+                      src="https://cdn6.agoda.net/images/property/highlights/transfer.svg"
+                      alt=""
+                    />
+                    <p>Airport Transfer</p>
+                  </div>
+                  <div className="hotel-highlights">
+                    <img
+                      src="https://cdn6.agoda.net/images/property/highlights/door.svg"
+                      alt=""
+                    />
+                    <p>Check-in [24-hour]</p>
+                  </div>
                 </div>
-                <div className="hotel-highlights">
-                  <img src="https://cdn6.agoda.net/images/property/highlights/like.svg" alt=""  />
-                  <p>great for activities</p>
-                </div>
-                <div className="hotel-highlights">
-                  <img src="https://cdn6.agoda.net/images/property/highlights/SafetyFeatures.svg" alt=""  />
-                  <p>Hygiene Plus</p>
-                </div>
-                <div className="hotel-highlights">
-                  <img src="https://cdn6.agoda.net/images/property/highlights/transfer.svg" alt=""  />
-                  <p>Airport Transfer</p>
-                </div>
-                <div className="hotel-highlights">
-                  <img src="https://cdn6.agoda.net/images/property/highlights/door.svg" alt=""  />
-                  <p>Check-in [24-hour]</p>
-                </div>
-               </div>
-                
               </div>
 
               <div className="booking-hotel-about ">
                 <h3>Facilities</h3>
                 <div className="facilities flex flex-wrap ">
-
-                <span><i class="fa-solid fa-check"></i>Free Wifi</span>
-                <span><i class="fa-solid fa-check"></i>Pool with view</span>
-                <span><i class="fa-solid fa-check"></i>Free Parking</span>
-                <span><i class="fa-solid fa-check"></i>Spa</span>
-                <span><i class="fa-solid fa-check"></i>Front-dest [24-hour]</span>
-                <span><i class="fa-solid fa-check"></i>Fitness Center</span>
+                  <span>
+                    <i class="fa-solid fa-check"></i>Free Wifi
+                  </span>
+                  <span>
+                    <i class="fa-solid fa-check"></i>Pool with view
+                  </span>
+                  <span>
+                    <i class="fa-solid fa-check"></i>Free Parking
+                  </span>
+                  <span>
+                    <i class="fa-solid fa-check"></i>Spa
+                  </span>
+                  <span>
+                    <i class="fa-solid fa-check"></i>Front-dest [24-hour]
+                  </span>
+                  <span>
+                    <i class="fa-solid fa-check"></i>Fitness Center
+                  </span>
                 </div>
-
               </div>
             </div>
             <div className="booking-right-section">
-              <div className="price-detailing">
-                <h2>Cart</h2>
+              <div className="sub-booking-right-section mb-3">
+                <div className="price-detailing">
+                  <h2>Cart</h2>
 
-                {/* : <p>"Add the rooms to be displayed here..."</p> */}
+                  {/* : <p>"Add the rooms to be displayed here..."</p> */}
 
-                {Object.values(count || {}).some((c) => c > 0) ? (
-                  <>
-                    {room.map((room) =>
-                      count?.[room._id] > 0 ? (
-                        <p key={room._id}>
-                          {count[room._id]} x {room.roomType} ={" "}
-                          {Number(count[room._id] || 0) *
-                            Number(room.price || 0)}
-                        </p>
-                      ) : null
-                    )}
-                    <p>
-                      <hr />
-                      {`Total = ${total}`}
-                    </p>
-                    <div className="book-now-ClickButton">
-                      <input
-                        type="button"
-                        value="Proceed to pay"
-                        onClick={handleCart}
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <p>Add the rooms to be displayed here...</p>
-                )}
+                  {Object.values(count || {}).some((c) => c > 0) ? (
+                    <>
+                      {room.map((room) =>
+                        count?.[room._id] > 0 ? (
+                          <p key={room._id}>
+                            {count[room._id]} x {room.roomType} ={" "}
+                            {Number(count[room._id] || 0) *
+                              Number(room.price || 0)}
+                          </p>
+                        ) : null
+                      )}
+                      <p>
+                        <hr />
+                        {`Total = ${total}`}
+                      </p>
+                      <div className="book-now-ClickButton">
+                        <input
+                          type="button"
+                          value="Proceed to pay"
+                          onClick={handleCart}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <p>Add the rooms to be displayed here...</p>
+                  )}
+                </div>
+              </div>
+              <div className="sub-booking-right-section">
+                <h3>About the hotel...</h3>
+                <p className="text-gray-500 p-1.5 mt-1 text-base">
+                  Welcome to {res.hotelName}, where comfort and luxury meet.
+                  Enjoy stylish rooms with modern amenities, delicious dining
+                  options, and exceptional service. Whether you're here for
+                  business or leisure, we provide a relaxing stay with easy
+                  access to local attractions. Book now and experience
+                  unparalleled hospitality!
+                </p>
               </div>
             </div>
           </div>
@@ -371,37 +420,80 @@ export default function HotelBookingPage() {
 
           {/* from here on this room-section */}
 
-          {room.map((room) => (
-            <div className="room-section, rooms-here">
-              <h2 className="room-heading">{room.roomType}</h2>
-              <div className="room-section-data">
-                <div className="room-image">
-                  <img src={room.roomPhoto} alt="" />
+          {room.map((room) =>
+            room?.availableRooms > 0 ? (
+              <div
+                key={room._id}
+                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition 
+                 overflow-hidden flex flex-col md:flex-row gap-4 p-4 mb-2"
+              >
+                {/* Room Image */}
+                <div className="flex-shrink-0 md:w-1/3">
+                  <img
+                    src={room.roomPhoto}
+                    alt={room.roomType}
+                    className="w-full h-48 md:h-full object-cover rounded-xl"
+                  />
                 </div>
-                <div className="room-about-data">
-                  <p> Number of persons {room.noOfPersons}</p>
-                  <p> Price of the room {room.price}/night</p>
-                  <p>Available Rooms {room?.availableRooms}</p>
-                  <p> {room.description}</p>
-                  <div className="book-now-ClickButton" key={room._id}>
-                    <div className="room-btn">
-                      <button
-                        onClick={() =>
-                          incrementor(room._id, room?.availableRooms)
-                        }
-                      >
-                        +
-                      </button>
-                      <button>{count?.[room._id] || "Book Now"}</button>
-                      <button onClick={() => decrementor(room._id)}>-</button>
+
+                {/* Room Info */}
+                <div className="flex flex-col justify-between md:w-2/3">
+                  <div className="flex justify-between">
+                    <div>
+                      <h2 className="text-xl font-semibold text-gray-800">
+                        {room.roomType}
+                      </h2>
+                      <p className="text-gray-600">
+                        👥 {room.noOfPersons} persons
+                      </p>
+                      <p className="text-gray-600">💰 ₹{room.price} / night</p>
+                      <p className="text-green-600 font-medium">
+                        {room.availableRooms} rooms available
+                      </p>
+                      <p className="text-gray-500 mt-2">{room.description}</p>
                     </div>
+                    <div>
+                      <h2 className="text-xl font-semibold text-gray-800">
+                        Amenities
+                      </h2>
+                      <p>Wi-Fi</p>
+                      <p>Air Conditioning</p>
+                      <p>Flat-Screen TV</p>
+                      <p>Mini Fridge</p>
+                      <p>Coffee Maker</p>
+                      <p>Complimentary Bottled Water</p>
+                    </div>
+                  </div>
+
+                  {/* Book Now Section */}
+                  <div className="mt-4 flex items-center gap-2">
+                    <button
+                      onClick={() =>
+                        incrementor(room._id, room?.availableRooms)
+                      }
+                      className="px-3 py-1 bg-gray-200 rounded-lg hover:bg-gray-300"
+                    >
+                      +
+                    </button>
+
+                    <button className="flex-1 bg-[#b72221] text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+                      {count?.[room._id] || "Book Now"}
+                    </button>
+
+                    <button
+                      onClick={() => decrementor(room._id)}
+                      className="px-3 py-1 bg-gray-200 rounded-lg hover:bg-gray-300"
+                    >
+                      -
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-          <div className="feedbacks">
-            <h2>What Our Customer's Say</h2>
+            ) : null
+          )}
+
+          <div className="feedbacks mt-3.5 bg-[#ecececd9] rounded-2xl shadow-md hover:shadow-lg transition p-4 ">
+            <h2 className="text-lg text">What Our Customer's Say</h2>
             {/* {console.log("the response", res)} */}
             <Feedback hotelId={res._id} />
           </div>

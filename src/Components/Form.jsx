@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ClickButton from "./ClickButton";
+import { getTime } from "date-fns";
+import { useToast } from "../hooks/toaster";
 
 export default function Form({
   insideHotelPage,
@@ -8,6 +10,25 @@ export default function Form({
   dateOnClick,
   handleProceed,
 }) {
+  const { showToast } = useToast();
+  useEffect(() => {
+    const now = new Date();
+    const today = now.toISOString().split("T")[0];
+    console.log("🚀 ~ Form ~ today:", today);
+
+    const currentTime = now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    console.log("🚀 ~ Form ~ currentTime:", currentTime);
+
+    if (dateData.checkIn === today && dateData.checkInTime < currentTime) {
+      showToast("checkin time should be later than now", "warning");
+      handleDateChange(currentTime, "checkInTime");
+    }
+  }, [dateData.checkInTime, dateData.checkIn]);
+
   return (
     <>
       <div className="form">
@@ -53,21 +74,24 @@ export default function Form({
               required
             />
           </div>
-          <div className="checkInTime">
-            <label htmlFor="checkInTime">CheckIn Time</label>
-            <select
+
+          <div className="flex flex-col gap-1 checkInTime">
+            <label
+              htmlFor="checkInTime"
+              className="text-sm font-medium text-gray-600"
+            >
+              Check-In Time
+            </label>
+            <input
+              type="time"
               name="checkInTime"
               id="checkInTime"
               value={dateData?.checkInTime}
-              // max = {dateData?.adults*2}
               onChange={(e) => handleDateChange(e.target.value, "checkInTime")}
-            >
-              {Array.from({ length: 24 }, (_, i) => (
-                <option key={i} value={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
+              className="border border-gray-300 rounded-lg px-3 py-2
+               text-gray-700 focus:outline-none focus:ring-2 
+               focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+            />
           </div>
           <div className="adults">
             <label htmlFor="peoples">Adults</label>
@@ -101,22 +125,6 @@ export default function Form({
               ))}
             </select>
           </div>
-          <div className="checkOutTime">
-            <label htmlFor="checkOutTime">CheckOut Time</label>
-            <select
-              name="checkOutTime"
-              id="checkOutTime"
-              value={dateData?.checkOutTime}
-              // max = {dateData?.adults*2}
-              onChange={(e) => handleDateChange(e.target.value, "checkOutTime")}
-            >
-              {Array.from({ length: 24 }, (_, i) => (
-                <option key={i} value={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
-          </div>
           <div className="checkout">
             <label htmlFor="checkout">Check-Out</label>
             <input
@@ -126,6 +134,29 @@ export default function Form({
               value={dateData?.checkOut || "dd/mm/yyyy"}
               onChange={(e) => handleDateChange(e.target.value, "checkOut")}
               required
+            />
+          </div>
+          <div className="flex flex-col gap-1 checkOutTime">
+            <label
+              htmlFor="checkOutTime"
+              className="text-sm font-medium text-gray-600"
+            >
+              Check-out Time
+            </label>
+            <input
+              type="time"
+              name="checkOutTime"
+              id="checkOutTime"
+              min={
+                dateData.checkIn === dateData.checkOut
+                  ? dateData.checkInTime + 4
+                  : ""
+              }
+              value={dateData?.checkOutTime}
+              onChange={(e) => handleDateChange(e.target.value, "checkOutTime")}
+              className="border border-gray-300 rounded-lg px-3 py-2
+               text-gray-700 focus:outline-none focus:ring-2 
+               focus:ring-blue-500 focus:border-blue-500 shadow-sm"
             />
           </div>
 
