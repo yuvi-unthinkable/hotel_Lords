@@ -23,11 +23,11 @@ export default function Form({
     });
     console.log("🚀 ~ Form ~ currentTime:", currentTime);
 
-    if (dateData.checkIn === today && dateData.checkInTime < currentTime) {
+    if (dateData?.checkIn === today && dateData?.checkInTime < currentTime) {
       showToast("checkin time should be later than now", "warning");
       handleDateChange(currentTime, "checkInTime");
     }
-  }, [dateData.checkInTime, dateData.checkIn]);
+  }, [dateData?.checkInTime, dateData?.checkIn]);
 
   return (
     <>
@@ -148,8 +148,8 @@ export default function Form({
               name="checkOutTime"
               id="checkOutTime"
               min={
-                dateData.checkIn === dateData.checkOut
-                  ? dateData.checkInTime + 4
+                dateData?.checkIn === dateData?.checkOut
+                  ? dateData?.checkInTime + 4
                   : ""
               }
               value={dateData?.checkOutTime}
