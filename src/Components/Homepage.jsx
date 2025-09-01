@@ -1,18 +1,14 @@
-import React from "react";
-import Marquee from "./Marquee";
+
 import Carousel from "./Carousel";
 import About from "./About";
 import Icons from "./Icons";
 import HotelandResaurts from "./HotelandResaurts";
 import Dining from "./Dining";
 import Hospitality from "./Hospitality";
-import Footer from "./Footer";
-import { ShowMore } from "@re-dev/react-truncate";
 
 export default function Homepage() {
   return (
     <>
-      <Marquee />
       <Carousel />
       <div className="parent-container">
         <About
@@ -60,7 +56,6 @@ export default function Homepage() {
         />
       </div>
 
-      <Footer />
     </>
   );
 }

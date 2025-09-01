@@ -6,7 +6,6 @@ import AutoPlay from "./AutoPlay";
 export default function Carousel() {
   return (
     <div className="carousel-container">
-      <Navbar />
       <AutoPlay  dotsIn = {true} className="carousel-width" dinner = {false}/>
       <Form />
     </div>

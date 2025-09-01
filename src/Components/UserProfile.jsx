@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import "./UserProfile.css";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import ClickButton from "./ClickButton";
+
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { useToast } from "../hooks/toaster";
@@ -126,7 +124,6 @@ export default function UserProfile() {
   // console.log(res.user);
   return (
     <div className="profile">
-      <Navbar />
       <div className="profile section">
         <div className="profile-upper-section">
           <div className="profile-image">
@@ -166,62 +163,8 @@ export default function UserProfile() {
         </div>
       </div>
 
-      <div className="bookings container">
-        <h2>My Bookings</h2>
-        <div className="booked-hotels">
-          <div className="book-detail">
-            {userBooking?.map((booking, index) => (
-              <div className="booking-rooms" key={index}>
-                <div className="booking-room-header">
-                  <span>
-                    <img src={booking.hotel?.photos[0].url} alt="" />
-                  </span>
-                  <span>
-                    <strong>Hotel:</strong> {booking.hotel?.hotelName || "N/A"}
-                  </span>
-                  bookingInfo
-                  <span>
-                    <div className="book-now-ClickButton">
-                      <input
-                        type="button"
-                        typeof="submit"
-                        value="Cancel Booking"
-                        onClick={() => deleteBooking(booking._id)}
-                      />
-                    </div>
-                  </span>
-                </div>
 
-                {booking.hotelRooms?.length > 0 ? (
-                  booking.hotelRooms.map((room, i) => (
-                    <div key={i} className="room-detail">
-                      <span className="col-4">
-                        <strong>Room Type:</strong> {room.roomType}
-                      </span>
-                      <span className="col-4">
-                        <strong>Rooms:</strong> {room.quantity}
-                      </span>
-                      <span className="col-4">
-                        <strong>Price:</strong> {room.totalPrice}
-                      </span>
-                      {/* <span className="col-4">
-                        <strong>Price:</strong> {room.checkIn}
-                      </span>
-                      <span className="col-4">
-                        <strong>Price:</strong> {room.checkOut}
-                      </span> */}
-                    </div>
-                  ))
-                ) : (
-                  <span>No rooms booked.</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      <Footer />
     </div>
   );
 }

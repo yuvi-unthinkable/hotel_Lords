@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import Navbar from "./Navbar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
@@ -49,7 +48,6 @@ function AutoPlay({ dinner }) {
   };
   return (
     // <div className="carousel-parent">
-    //   <Navbar />
     <div className="slider-container">
       <Slider {...settings}>
         {/* <div>

@@ -1,21 +1,42 @@
-import { useCallback, useInsertionEffect, useState } from "react";
-import React from "react";
+import { useEffect, useState } from "react";
 import ClickButton from "./ClickButton";
 import useAuth from "../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import ThemeBtn from "./ThemeButton";
 export default function Navbar() {
   const [displayHotel, setDisplayHotel] = useState(false);
   const [displaySidebar, setDisplaySidebar] = useState(false);
 
-  // const handleDisplayHotel = () => {
-  //   setDisplayHotel((prevDisplayHotel) => !prevDisplayHotel);
-  // };
-  // const handleDisplaySidebar = () => {
-  //   setDisplaySidebar((prevdisplaySidebar) => !prevdisplaySidebar);
-  // };
-
   const [isAuth, res] = useAuth();
   console.log("🚀 ~ Navbar ~ res ka data:", res);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [val, setVal] = useState("");
+
+  useEffect(() => {
+    console.log("🚀 ~ Navbar ~ location.pathname:", location.pathname);
+
+    if (location.pathname === "/homepage") {
+      setVal("profile");
+    } else {
+      setVal("back");
+    }
+  }, [location.pathname]);
+
+  const backButton = () => {
+    if (location.pathname === "/homepage") {
+      navigate("/profile");
+    } else {
+      // Try to go back, but if no history, fallback to homepage
+      if (window.history.length > 1) {
+        navigate(-1);
+      } else {
+        navigate("/homepage");
+      }
+    }
+  };
 
   const cities = [
     "Ahmedabad",
@@ -256,11 +277,12 @@ export default function Navbar() {
           <li>
             <span>Gallery</span>
           </li>
-          <li>
-            <span>CSR</span>
+          
+          <li onClick={()=> navigate("/mybookings")}>  
+            <span>My Bookings</span>
           </li>
           <li>
-            <span>Join Our Team</span>
+            <span><ThemeBtn/></span>
           </li>
         </div>
         <li
@@ -296,11 +318,12 @@ export default function Navbar() {
               <div className="gallery">
                 <span>Gallery</span>
               </div>
-              <div className="csr">
-                <span>CSR</span>
+              
+              <div onClick={()=> navigate("/mybookings")} className="joinourteam">
+                <span >My Bookings</span>
               </div>
-              <div className="joinourteam">
-                <span>Join Our Team</span>
+              <div className="csr">
+                <span><ThemeBtn/></span>
               </div>
             </div>
           ) : (
@@ -326,7 +349,9 @@ export default function Navbar() {
               {/* {console.log("🚀 ~ isAuth?.res?.data?.fullname:", isAuth.res.data.fullname)} */}
             </p>
           </div>
-          <ClickButton val="Profile"></ClickButton>
+          <div className={"book-now-ClickButton"}>
+            <input type="button" value={val} onClick={backButton} />
+          </div>
         </li>
       </ul>
     </div>

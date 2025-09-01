@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+
 import Form from "./Form";
 import "./hotelBooking.css";
 import { useToast } from "../hooks/toaster";
@@ -259,7 +258,6 @@ export default function HotelBookingPage() {
 
   return (
     <>
-      <Navbar />
       <div
         className="background"
         style={{
@@ -500,7 +498,6 @@ export default function HotelBookingPage() {
         </div>
       </div>
 
-      <Footer />
     </>
   );
 }

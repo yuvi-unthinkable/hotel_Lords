@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { Star } from "lucide-react";
@@ -66,7 +65,6 @@ function HotelFeedbacks() {
 
   return (
     <>
-      <Navbar />
 
       <div className="max-w-2xl mx-auto p-6 bg-gray-50 rounded-lg shadow-md my-6 feedback-content">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
@@ -158,7 +156,6 @@ function HotelFeedbacks() {
         </div>
       </div>
 
-      <Footer />
     </>
   );
 }

@@ -78,7 +78,7 @@ export default function Form({
           <div className="flex flex-col gap-1 checkInTime">
             <label
               htmlFor="checkInTime"
-              className="text-sm font-medium text-gray-600"
+              className="text-sm font-medium "
             >
               Check-In Time
             </label>
@@ -139,7 +139,7 @@ export default function Form({
           <div className="flex flex-col gap-1 checkOutTime">
             <label
               htmlFor="checkOutTime"
-              className="text-sm font-medium text-gray-600"
+              className="text-sm font-medium"
             >
               Check-out Time
             </label>
